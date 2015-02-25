@@ -1,0 +1,2359 @@
+Plan for ugen
+
+Denne uge drejer sig om at komme igang med Python.  Tirsdag skal du installere en Python fortolker, og lære denne at kende ved at køre nogle programmer.  IPython kan anbefales da denne findes til Linux, Unix, Mac OS X og Windows - og kan benyttes med bibliotekerne numpy og matplotlib, som vi skal bruge senere på kurset. Torsdag skal du arbejde med begrebet unøjagtighed.  Som forberedelse til forelæsningerne forventes følgende:
+Find rødderne i andengradsligninger med den beskrevne numerisk korrekte metode du finder i note på kursets hjemmeside. 
+    Metoden skal udtrykkes ved, at du i Python definerer et program script som indeholder tre formelle parametre a, b og c (koefficienterne i polynomie), og til slut udskriver de to løsninger.  Afprøv scriptet med som aktuelle parametre.
+
+Installer Python på din maskine ved at følge installationsparty noten (findes i Absalon under Undervisningsmateriale/Python Install Party). Kør de i noten foreslået Python test programmer.
+
+Start Python fortolkeren og skriv for at åbne Pythons indbygget hjælp og dokumentations 
+funktionalitet. Eller du kan skrive for at få information om udtrykket. Gør dig bekendt med Pythons 
+dokumentationsfunktionalitet.
+
+Hvis dette ikke virker skal du installere yderligere Python dokumentation eller sætte en miljøvariabel i styresystemet (Windows, 
+Mac OS X, Linux) - detaljerne afhænger af dit styresystem og din python installation.
+
+ Start Python fortolkeren og anvend den som lommeregner. Pythons syntaks for matematiske operationer er næsten 
+identisk med standard matematisk notation. Du kan eksempelvis anvende for addition, subtraktion 
+og division og de fungere som forventet. For multiplikation anvendes symbolet.
+
+Prøv at løse følgende problemer ved hjælp af Python fortolkeren: Hvis du løber et 10-kilometer løb på 43 minutter og 30 
+sekunder, hvad er så din gennemsnitshastighed målt i kilometer i timen? Hvad er din gennemsnitshastighed målt i meter pr. sekund (m/s)?
+
+ Øv dig i at anvende Python fortolkeren som lommeregner:
+
+ Volumen af en kugle med radius er givet ved er volumen af kuglen med radius? 
+Hint: Svaret er ikke 
+ Antag at prisen på en bog er kr. i din boghandel, men boghandlen får rabat på bogen. 
+Transportomkostningerne for første bog er kr. 3 og kr. 0,75 for hver kopi af bogen derudover. Hvilken udgift har boghandlen ved 
+indkøb af 60 kopier af bogen? 
+ Hvis du tager ud og løbe en tur kl. 6:52 og starter med at løbe 1 km i opvarmningstempo ved 8:15 (8 minutter og 15 
+sekunder) pr. km, derpå 3 km i hurtigt temp ved 7:12 pr. km, for at afslutte med 1 km i langsomt tempo (igen 8:15 pr. km), hvad 
+tid er du så hjemme?
+
+Skriv følgende udtryk i Python fortolkeren og se hvad de gør:
+Prøv nu at skrive de samme udtryk ind i en Python script fil og kør scriptet. Hvilket output får du? Ændre scriptet ved at 
+omforme hver linje til et udtryk og kør scriptet igen. Får du nu det same som da du skrev linjerne direkte i 
+fortolkeren?
+
+Anvend Python fortolkeren til at checke dine svar.
+
+Hvilke af de følgende tegnsekvenser er lovlige variabelnavne i  og for dem som ikke er, forklar hvorfor.
+ 
+Du er ved at skrive et program, der skal behandle og udskrive datoer og kalendere.  I den forbindelse bliver der brug for variable med de nedennævnte betydninger.  Foreslå passende navne til disse størrelser, idet navnene bør være letforståelige uden at blive for lange (normalt mellem 3 og 9 tegn).
+
+Navnene bogpris og rabatpct betegner henholdsvis en bogs pris (som et helt antal øre) og en rabat (et helt antal procent).  Skriv et generelt udtryk indeholdende konstanter og operatorer samt de variable bogpris og rabatpct til beregning af bogens pris i øre med rabatten trukket fra.
+
+Beregn udtrykket for forskellige priser og rabatter.  Hvis bogprisen eksempelvis er 2995 og rabatprocenten 9, bliver prisen med rabatten trukket fra 2725 øre.
+
+[Vink: Funktionerne kan være til nytte her.]
+
+Den svenske pædagog 
+definerede en teksts læsbarhedsindeks (lix)
+som summen af det gennemsnitlige antal ord per periode
+(det vil sige mellem to punktummer) og procentdelen af lange ord
+(ord på over seks bogstaver).
+
+Lix angives normalt som et helt tal; tekster med lix på
+20, 30, 40, 50 og 60 kan anses som henholdsvis meget lette, lette,
+middelsvære, svære og meget svære.
+
+Skriv et Python script som erklærer to variable x og y som du kan sætte til forskellige talværdier (du bestemmer). 
+Scriptet skal derpå analyser værdierne af de to variable og udprinte værdien 1 hvis værdien 0 hvis værdien.
+
+Plan for ugen
+På dette kursus beskrives fire måder, hvorpå man i Python
+kan bryde den normale sekventielle udførelse af programsætninger:
+
+Kald af en funktion (og af en metode) bevirker udførelse af funktionens
+(metodens) krop.
+I forbindelse med betingelser kan man styre til- og fravalg af programdele.
+Programdele kan gentages, styret af en betingelse.
+På tværs af de tre ovennævnte strukturerede'
+programkonstruktioner kan man kaste og gribe
+undtagelser.
+
+Den centrale mulighed for at samle en programdel under et enkelt navn
+ved at definere (def) den som en funktion
+gennemgåes i denne uge.
+
+I denne uge fortsættes også med gennemgangen af de forskellige muligheder
+for valg og forgreninger, og gentagelseskonstruktionerne
+while (med de tilhørende afbrydelser break
+og continue) og for.
+Senere i kurset vil vi gennemgå undtagelser og hvorledes disse kan gribes og håndteres.
+
+Desuden omtales datatypen strenge og indlæsning til
+programmer fra tastatur, samt introduktion til forskellige talsystemer og boolsk algebra.
+
+Noterne findes via punktet ``Undervisningsmateriale'' på kursushjemmesiden.
+Denne opgave omhandler rødder i komplekse andengradspolynomier.
+
+Python har en indbygget datatype til repræsentation af komplekse tal, kaldet complex. Dertil findes der et bibliotek med 
+mathematiske funktioner på komplekse tal kaldet cmath. Vi skal dog prøve at skrive nogle af funktionerne selv.
+
+a) Skriv funktionerne cmod(z) og carg(z), der tager det komplekse tal z som parametre 
+og returnerer hhv. modulus og argumentet af det komplekse tal z. Det er ikke tilladt at benytte cmath.polar eller 
+cmath.phase.
+
+b) Skriv funktionerne csqrt1(z) og csqrt2(z) der tager det komplekse tal z som parameter 
+og beregner kvadratrøderne vha. thm. thm2. Brug funktionerne fra delopgave (a). [Note: Ovenstående funktioner kan 
+skrives mere elegant ved hjælp af Pythons sæt (eng. tuple) datastruktur.]
+
+c) Brug thm. thm1 til at skrive funktionerne polyrod1 og polyrod2, der bestemmer rødderne givet et 
+komplekst polynomium f(z). Du bestemmer selv hvilke parametre de to funktioner skal tage. Det er tilladt at bruge biblioteket 
+cmath, men funktionerne fra (a) og (b) bruges i stedet for 
+cmath.polar, cmath.sqrt.
+
+d) Alle funktioner ovenfor skal dokumenteres med docstrings i forbindelse med funktionsdefinitionen.
+
+Mange beregninger forløber på den måde,
+at man i langt de fleste tilfælde kan følge en
+hovedregel, som der i nogle få tilfælde
+er undtagelser fra.  For at programmere sådan en
+beregning kan man begynde med at teste for undtagelserne
+og derefter, hvis ingen af disse foreligger, bruge hovedreglen.
+
+Et eksempel med denne struktur er flertalsdannelse af engelske
+navneord.  Som hovedregel danner navneord flertal på
+engelsk ved tilføjelse af -s.  Som en forsimplende
+antagelse vil vi i denne opgave gå ud fra, de eneste undtagelser
+er man, woman, sheep
+og mouse, som i flertal henholdsvis hedder men,
+women, sheep og mice.
+
+Skriv et Python program (script), der virker
+på følgende måde, når det køres:  Programmøren angiver ordet vi ønsker at kende flertal på ved at angive det i en 
+variabel. Derpå
+udskrives teksten Det engelske navneord , efterfulgt af det ønskede ord.  Programmet skriver derpå 
+hedder flertalsform i flertal.,
+hvor flertalsform er flertalsformen af det
+angivet ord. Programmet terminere derpå.
+
+Her er et par eksempler på kørsel af programmet:
+
+ Skriv et Python program (script) som undersøger tre variable x, y og z for derpå at printe det største ulige tal 
+blandt dem. Hvis ingen af dem er ulige, skal programmet printe en besked ud om dette.
+Et tal a er en potens af b, hvis det kan divideres med b (dvs. b går op i a) og a/b er en potens af b. Dvs. vi kan skrive følgende
+Skriv et program som definere to variable a og b og udskriver en besked hvis a er en potens af b. Hvis ikke, skal 
+programmet udskrive en besked om at det ikke er tilfældet. Prøv forskellige værdier for a og b (både hvor a er en potens 
+af b hvor det ikke er tilfældet) og afprøv om dit program 
+fungere som det skal for disse værdier.
+
+  (Hint: Denne opgave er god at løse inden du løser den obligatoriske opgave):
+
+Python har en indbygget datatype til repræsentation af komplekse tal, kaldet complex. Vi kan oprette det 
+komplekse tal z=3+i 4 således z = complex(3, 4). Prøv at skrive help(complex) i Python fortolkeren og gør dig 
+bekendt med tilladte operationer for complex.  Prøv at lave følgende beregninger i hånden og derpå tjek dem med 
+Python:
+Fortsæt tabel~1 i noterne om positionsrepræsentation
+fem pladser længere.
+Udtryk decimaltallet 100 i binær notation. Hvad er værdien af
+0145 i Python?  Hvad er værdien af 0xe6? Hvad er decimalværdien af det binære tal 10011?  
+
+Antag at følgende variable har følgende boolske værdier:
+Prøv at beregne værdierne af følgende udtryk i hånden:
+Tjek dine resultater ved hjælp af Python fortolkeren.
+
+
+ Lad os fortsætte med tirsdagsopgave ved at omskrive den samt at tillade input fra 
+brugeren af programmet. 
+
+Definer en funktion flertal() uden formelle parametre, der virker
+på følgende måde, når den kaldes:  Først
+udskrives teksten Det engelske navneord , og derefter
+venter funktionen på inddata.  Hvis brugeren indtaster ordet
+exit, afsluttes funktionen, men ellers skriver den
+hedder flertalsform i flertal.,
+hvor flertalsform er flertalsformen af det
+indtastede ord, og fortsætter med endnu en gang at
+spørge  Det engelske navneord .
+
+Her er et eksempel på funktionskald:
+
+Definer en funktion reprBase(n,g) af to formelle parametre,
+sådan at et kald af form reprBase(n,g) på en linje
+udskriver n som cifferfølge med grundtal g, idet de enkelte ``cifre''
+adskilles af blanktegn.
+[Vink:  Hvis n<g, skal funktionen blot udskrive n,
+og ellers skal cifferfølgen for n // g efterfølges af cifferet
+n \% g.]
+
+Sørg for, cifrene kommer i den rigtige rækkefølge
+(de mest betydende forrest; mindst betydende ciffer til sidst).
+
+Hvad gør din funktion, hvis den kaldes med g = 1?  Hvorfor?
+
+ Lav en implementation af kvadratrodsalgoritmen vi gennemgik i uge 1 --- algoritmen er beskrevet i bogen samt på slides.
+Lav din implementation som en funktion. Afprøv derpå din kvadratrodsalgoritme og sammenlign den ved 
+at udskrive en tabel som denne:
+Hvor første søjle angiver tallet vi tager kvadratrod af, anden søjle angiver kvadratrodresultatet produceret af din funktion, 
+tredje søjle angiver kvadratroden produceret med og sidste søjle angiver differencen mellem de to metoders 
+kvadratrødder. Fortsæt tabellen op til eksempelvis 9.0.
+
+ Den indbyggede funktion eval tager som parameter en streng og evaluerer strengen med Python fortolkeren og 
+returnere resultatet.
+Skriv en funktion kaldet eval\_loop som iterativt beder brugeren indtaste en streng som derpå evalueres med eval og udprinter resultatet. Funktionen skal fortsætte indtil brugeren skriver 'done'.
+
+
+Definer en funktion tobogst(w) med følgende
+virkning:  Hvis w er et ord med n bogstaver, giver funktionskaldet
+tobogst(w) anledning til udskrivning af de
+\binomcoeffn2 to-bogstavs-ord,
+som kan dannes af w (med de to bogstaver i samme rækkefølge
+som den, hvori de forekom i w).
+
+Eksempel: Funktionskaldet tobogst('arme') kan give udskriften
+
+
+ Antallet af delmængder med netop k elementer 
+udtaget fra en mængde med n forskellige elementer er \binomcoeffnk
+(læses: ``binomialkoefficienten n over k'' eller blot ``n over k'')
+og kan beregnes af
+Definer en funktion binomcoeff(n,k), som
+ud fra sammenhængen i (binomcoeff)
+beregner og returnerer binomialkoefficienten n over k.
+
+Plan for ugen
+I denne uge fortsætter vi med brugen af funktioner som element i vores programmer og vi vil fokusere på såkaldte 
+rekursive funktioner og hvorledes konceptet rekursion kan anvendes som modelleringsværktøj. Et andet 
+modelleringsaspekt vi berører er konvergens i numeriske beregninger, Newtons metode og bisektionsmetoden.
+
+Vi skal også se hvorledes vi i Python kan skrive vores egne moduler og pakker som indeholder samlinger af funktioner og 
+datatyper og hvad vi kan bruge disse til.
+
+Endelige så fortsætter vi gennemgangen af talrepræsentation i computeren og vil i denne uge fokusere på flydende tal og 
+faldgrupper ved regning med flydende tal.
+
+I nogle af øvelsesopgaverne arbejder vi med ``kædebrøker''.
+
+
+Forberedelse til forelæsningerne:
+Vi udnytter dette og skriver 
+Ideen er nu at nærme sig c iterativt ved at udnytte ovenstående. Vi begynder dermed med et startgæt c_0\in (a,b) og beregner 
+
+a) Brug  og  til at skrive et program, der finder nulpunkterne af en kontinuert funktion.
+Bemærk pga. afrundingsfejl, som medfører at vi aldrig når 0, bør vi indføre terminationskriterier 
+såsom
+og man kan derudover indfører et maksimalt antal skridt n_\max, således at hvis n> n_\max, så terminerer 
+beregningen. 
+
+Kør dit program på disse funktioner og for nulpunktet \hatc evaluerer funktionerne på føgende måde f(\hatc), 
+f(\hatc+\epsilon) og f(\hatc-\epsilon), \epsilon > 0 og udskriv værdierne.
+Komment\' er dine resultater i et dokument du aflevere i PDF format. 
+
+Hvis du har løst tirsdagsøvelsesopgave ref:zerocrossings, så prøve at sammenligne de to løsninger. Hvordan fungere metoden ift. løsningen til tirsdagsøvelsesopgave ref:zerocrossings? 
+
+Kan vi også bruge metoden til at bestemme maksimum og minimum af en funktion?
+
+ Denne opgave er hentet fra
+kryptografi, læren om at skrive hemmelige meddelelser.
+Klarteksten, som er den meddelelse, der skal transmitteres,
+omskrives til cifferteksten på en sådan måde,
+at kun den rette modtager, som er i besiddelse af den
+nødvendige hemmelige nøgle, er i stand til at
+gendanne klartekst ud fra ciffertekst.
+Klartekst og ciffertekst opfattes som sekvenser af tegn
+fra et vist kodealfabet.  I moderne kryptografi benyttes
+meget store alfabeter (typisk med mere end 10^19 tegn),
+men i opgaverne her vil vi omtale klassiske metoder
+(fra før computernes tid)-
+
+Dengang var kodealfabetet de almindelige
+bogstaver, idet man først fjernede alle mellemrum, kommaer og
+andre tegn fra klarteksten, så der udelukkende stod
+bogstaver tilbage, og man i øvrigt ved indkodning ikke
+skelnede mellem små og store bogstaver.
+
+For nemheds skyld vil vi i første omgang løse opgaven
+for tekster, der kun bruger de 26 latinske bogstaver a--z.
+
+Affin kodning er bestemt af to konstanter, vi kan kalde
+k_0 og k_1.  Hvert bogstav i klarteksten omsættes
+(i uændret rækkefølge) til et bogstav i cifferteksten
+på følgende måde:
+Idet hvert bogstav svarer til et tal
+ganges dette tal med konstanten k_1, konstanten k_0 lægges til,
+og resultatet skal være bogstavet med det fremkomne nummer.
+Hvis nummeret bliver for stort, bruges i stedet den rest,
+som fremkommer ved heltalsdivision med 26.
+
+Skriv en funktion af tre argumenter,
+som for to konstanter k_0 og k_1, der
+skal bestemme den affine kode, samt
+en klartekst, danner den tilsvarende ciffertekst.
+
+Løs bagefter, hvis tiden tillader det, den tilsvarende opgave
+for det danske alfabets 29 bogstaver, hvor altså
+
+Man kan vise, at klarteksten i almindelighed netop kan gendannes
+ud fra cifferteksten, hvis k_1 og antallet af bogstaver i alfabetet
+er indbyrdes primiske.  
+
+[Vink:  Eftersom de latinske bogstaver a--z ligger samlet efter
+hinanden i tegnsættet ASCII, kan man med fordel anvende type konverteringsfunktionerne til 
+konvertering mellem tegn og tal (anvend til at få information om disse funktioner). Eksempelvis ved
+
+
+Hint: Denne opgave er god at løse inden du løser den obligatoriske opgave
+
+Skriv et rekursivt program, der finder et nulpunkt af en kontinuert funktion på et lukket interval, som udnytter 
+resultaterne i opgave (a). Bemærk pga. afrundingsfejl, som medfører at vi aldrig når 0, bør vi indføre terminationskriterier 
+såsom
+Har du andre forslag til terminationskriterier?
+og komment\' er dine resultater.
+
+Denne opgave handler om binære tal. Udregn i hånden og tjek bagefter dit resultat ved hjælp af Python.
+Denne opgave omhandler 2-komplement repræsentation af binære heltal. Udregn i hånden og tjek bagefter dit resultat ved hjælp af Python.
+    
+ I denne opgave betragtes binær 'floating point' notation med 8
+ bit. Notationen er som følger: Længst til venstre er en
+ fortegnsbit efterfulgt af 3 bit til eksponenten, hvoraf første er
+ eksponentens fortegn. De sidste fire bit er signifikanten, se
+ Tallet 2.75 kan skrives som 0.275\cdot 10^1. Opskriv 2.75 i binær 'floating point' notation med 8 bit.
+ Hvad er det nærmeste, man kan komme på tallet 2.80 med denne repræsentation? D.v.s.\ hvor stor vil afrundingsfejlen blive i titalssystemet?
+ 
+Løs opgave 8.12 fra \laerebogen.  Du kan gå ud fra,
+at ved funktionskaldene rotate\_word(s,n) indeholder
+s kun små latinske (det samme som engelske) bogstaver.
+
+[Vink:  Eftersom de latinske bogstaver a--z ligger samlet efter
+hinanden i tegnsættet ASCII, kan ``rotation'' med afstanden n
+af et enkelt bogstav c udtrykkes
+
+ Vi returnere til denne opgave fra Ugeseddel 2: Antallet af delmængder med netop k elementer 
+udtaget fra en mængde med n forskellige elementer er \binomcoeffnk
+(læses: ``binomialkoefficienten n over k'' eller blot ``n over k'')
+og kan beregnes af
+Definer en rekursiv funktion binomcoeff(n,k), som
+ud fra sammenhængen i (binomcoeff)
+beregner og returnerer binomialkoefficienten n over k.
+
+
+ Ackermanns funktion er defineret således for to heltal parametre:
+Skriv en funktion som evaluerer Ackermanns funktion. Anvend funktionen med som skal give 
+resultatet 125. Hvad sker der for størrer værdier?
+ Den største fælles divisor er det største tal som kan dividere begge tal uden en rest.
+
+En måde at finde GCD for to tal er Euclids algoritme, som er baseret på at hvis r er resten efter division af a med b, så 
+gælder der at gcd(a,b) = gcd(b,r). Som base tilfælde kan vi anvende gcd(a, 0) = a. 
+
+Skriv en funktion gcd som tager to parametre a og b og returnere den største fælles divisor. For mere hjælp se 
+
+Et palindrom er et ord som staves ens forfra og bagfra, såsom "mellem" og "rotor". En rekursiv definition af et palindrom 
+er at første og sidste bogstav er ens, og ordet i midten mellem disse to bogstaver er et palindrom. 
+
+Følgende funktioner tager en streng som parameter og returnere henholdvis første og sidste bogstav samt midten:
+ Skriv ovenstående funktioner ind i et Python script og afprøv dem. Hvad sker der hvis du kalder middle med et ord 
+på to bogstaver? Hvad med et bogstav? Hvad med den tomme streng som skrives som enten '' eller ""|?
+ Skriv en funktion er\_palindrom som tager en streng som parameter og returnere værdien True hvis ordet er 
+et palindrom, ellers returneres værdien False.
+
+ I noternes afsnit om ``Rationale tilnærmelser til en brøk''
+anføres det, at ``Sideløbende med bestemmelsen af kvotienterne q_i
+[delnævnerne] fra(3)
+kan man beregne A'erne og B'erne [konvergenternes tællere og nævnere]
+med (1) \ldots''.
+
+Denne bemærkning dækker mere konkret over, at man for en brøk \fracab
+kan opstille skemaet
+Opgaven går ud på at gennemføre de viste beregninger, idet man dog ikke
+skal bruge alle de mange variabelnavne i skemaet, men kun løbende opretholde
+et ``vindue'' af tre på hinanden følgende rækker.
+
+Definer en funktion convrgntsRat(a,b,n) af tre formelle
+parametre, sådan at et kald af formen convrgntsRat(a,b,n),
+hvor a er et helt tal, b et positivt helt tal og n et ikke-negativt helt tal,
+skal give anledning til, at konvergenterne K_0, K_1, \ldots, K_n-1 i
+kædebrøksudviklingen af \fracab
+udskrives i n på hinanden følgende linjer.
+Hvis K_i bliver lig med \fracab allerede for et i<n
+(hvilket vil vise sig ved, at r_i bliver lig med 0),
+skal udskrivning dog standse der.
+Udfør kaldet og genfind derved nogle af de almindeligt benyttede rationale tilnærmelser til
+
+[Vink: Programmer ligningerne (1) fra noternes
+afsnit 3.1:  udskrives,
+og som gentages det ønskede antal gange.
+Pas på ikke at komme til at dividere med 0.]
+
+Derved kan man nå frem til den af Balmer (Johann Jakob Balmer, 1825--1898)
+fundne lov
+
+ Betragt den uendelige kædebrøk
+Opstil ud fra den måde, hvorpå
+kædebrøken \varphi er indeholdt som en del af sig selv, en andengradsligning
+til bestemmelse af \varphi, og løs ligningen.  (\varphi kaldes også for
+``det gyldne snit''.  \varphi eller phi er det fjerdesidste bogstav
+i det græske alfabet og udtales på dansk [fi].)
+
+
+ (For de specielt matematisk interesserede:)
+Bevis, at for en brøk \fracab vil der for de i noternes afsnit~3.2
+``Rationale tilnærmelser til en brøk''
+definerede størrelser gælde
+
+Plan for ugen
+
+I programmer har vi hidtil benyttet simple variable
+der hver kun kan rumme en enkelt værdi, men nu
+skal vi arbejde med sekvenser der med et enkelt navn kan
+dække en hel stribe data.
+
+I denne uge fokuseres på Pythons forhåndsdefinerede datastrukturer som inkluderer tegnstrenge og
+lister, hash-tabeller (eng.\ dictionaries),
+sæt (eng.\ tuples). Man tilgår elementerne i en sekvens ved indicering
+eller ved at udtage en skive (eng.: slice).  Tegnstrenge er
+uforanderlige (eng.: immutable), hvilket vil sige, at man ikke
+kan ændre dele af en tegnstreng,
+mens man i lister både
+kan hente (læse) og ændre (skrive) enkelte elementer eller
+hele skiver.
+
+Vi skal ligeledes se hvorledes vi kan indlæse fra og skrive til filer (eng.\ 
+files) i Python. Endelig skal vi se hvordan vi kan lave grafiske illustrationer i Python --- en central kundskab indenfor 
+naturvidenskab.
+
+I denne uges tirsdagsforelæsning gennemgåes de forskellige datastrukturer og deres anvendelser. Herunder 
+repræsentation af tegn i Unicode, og hash-tabeller,
+som muliggør effektive tabelopslag.  
+
+I torsdagsforelæsningen behandles sæt (eng. tuples) og filer.
+Desuden omtales funktionen\\
+matplotlib.pyplot.plot() til grafisk fremstilling i et koordinatsystem.
+
+
+
+Forberedelse til forelæsningerne:
+
+Læs også notatet om Visualisering
+
+Der er ingen obligatorisk afleveringsopgave i denne uge.
+
+Programbiblioteket matplotlib.pyplot betegnes i det følgende
+blot plt, sådan som det
+for eksempel vil gælde efter python-sætningen
+ Prøv ved hjælp af oplysningerne i noterne om
+tegn og tegnstrenge at gøre
+rede for de besynderlige koder i nedenstående eksempel:
+En samling mønter kan bekvemt repræsenteres af
+en associationsliste, der har
+møntværdier som indgangsnøgle
+og antallet af mønter af den pågældende slags som indhold.
+To tiere, en tokrone, en enkrone og tre halvtredsører repræsenteres
+for eksempel.
+
+Skriv en funktion, som beregner det samlede beløb i en sådan
+repræsentation. For eksemplet ovenfor skal funktionsværdien
+være 2450 (øre).
+
+Skriv også en funktion, der omvendt for et argument i form af
+et ørebeløb som funktionsværdi giver en associationsliste,
+der repræsenterer dette beløb under brug af
+færrest mulige mønter.  For 2450 kunne funktionsværdien
+for eksempel være
+
+[Vink:  Denne sidste funktion kan konstrueres efter det såkaldt
+grådige princip, hvor de forskellige mulige danske
+møntværdier afprøves efter tur med den største først.]
+
+Definer en funktion platon(\mathitntr), der skal kaldes
+med et argument \mathitntr, som er en liste af tripler af heltal.  Funktionens
+krop skal bruge formatoperatoren (\%), sådan at der
+udskrives en linje for hvert tripel i listen.  Linjernes indhold
+fremgår af dette eksempel:
+
+Funktionskaldet skal bevirke udskriften
+
+og først når en søjle er fuld,
+fortsætter man i den næste:
+
+Inden for et rektangulært skema med r rækker og s søjler
+er et element ved rækkevis opstilling af en sekvens
+havnet i række i og søjle j.  Hvor ville det samme
+element være havnet ved søjlevis opstilling af sekvensen?
+
+[Vink:  Nummerer såvel sekvensen som rækker og søjler
+begyndende med 0.  Overvej, om heltalsdivision
+kunne være til nytte.]
+
+Definer funktionen som tager en liste som argument og returnere, hvis listen indeholder 
+mindst et element som forekommer flere gange i listen.
+
+Hvad skal returnere?
+
+ Brug hashtabeller til konstruktion af en mere effektiv
+udgave af funktionen 
+
+ Skriv en funktion som tager en liste af tal som argument og returnerer den kumulative sum, dvs. en ny liste hvor det i'te 
+element er summen af de i+1 foregående elementer i den originale liste. Eksempel: Den kumulative sum. 
+
+additionstegn, men faktisk er det muligt
+at beregne resultatlisten med kun n-1 additionsoperationer!
+Hvor mange additionsoperationer bruger din løsning?
+
+
+ Definer under brug af formatoperatoren sådan at hvis
+en hashtabel af den slags, der blev benyttet i
+opgave  og som altså
+knytter antal til øreværdier, så vil kaldet
+udskrive en pæn opstilling
+med antal og møntværdi
+i separate linjer for hver mønt i hashtabellen.
+
+Funktionskaldet
+kunne for eksempel give anledning til udskrivning af
+(Som eksemplet viser, er det helt i orden at lade hashfunktionen
+bestemme linjernes rækkefølge og at blæse på
+dansk grammatik i denne opgave.)
+
+Definer en funktion af en formel parameter, som omsætter en hashtabel til et par af lister.
+Hvis hashtabellen knytter x'er til y'er, skal funktionen returnere
+parret bestående af listen af x'er og listen af de tilsvarende y'er,
+idet listen af x'er skal være i ikke-aftagende orden.
+
+
+ Vælg et passende sted på din computer
+til eksperimenter med filer.  Lad os sige, du vælger
+kataloget med absolut stinavn.
+
+Indtast i et Python-afviklingsvindue følgende linjer:
+og åbn derefter den dannede fil i et passende tekstbehandlingsprogram
+(for eksempel Notesblok, TextEdit, gedit eller emacs) for at kontrollere, at teksten
+faktisk er blevet skrevet i den.
+
+Afhængigt af, hvordan tegntabellerne er sat op på maskinen, kan det være
+nødvendigt med særbehandling af de danske bogstaver, for eksempel med
+Prøv at skrive noget mere ud til filen, og bemærk, hvordan tekst først
+kommer til syne i tekstbehandlingssystemets vindue efter.
+Måske skal tekstvinduet genindlæses (eller lukkes og
+genåbnes).  Husk til sidst at skrive
+
+ Denne opgave bruger det samme katalog som den foregående opgave.  Opret i dette katalog
+med et passende tekstbehandlingsprogram
+en fil med navnet
+Tast 3--5 linjers tekst ind, og gem filen
+
+Knyt nu Python-navnet til filen med
+
+Fortsæt med kald af,
+til alle linjer i filen er læst.
+Husk til sidst at skrive
+Definer en funktion 
+af en formel parameter, sådan at hvis et kald af formen
+udføres på en computer,
+hvor er absolut stinavn til en tekstfil
+med indhold som beskrevet nedenfor, så returneres en hashtabel
+med tekstfilens indhold.
+
+Tekstfilen antages at bestå af n linjer, hver med to
+flydende talord adskilt af komma
+og talparrene skal returneres som en hashtabel.
+
+Afprøv funktionen på filerne, som ligger på kursushjemmesiden
+i undermappen Datamateriale
+under Undervisningsmateriale.
+(Overfør først de to filer til din egen computer.)
+
+ Kombiner funktionerne
+
+Plan for ugen
+
+I denne uge præsenteres funktionsprogrammering, det vil sige den
+særlige programmeringsstil, hvor alle beregninger foretages ved sammensætning af funktioner og variable beholder den
+værdi, de bindes til, og man slipper for at tænke på lagerpladser. Udover dette vil vi fortsætte med emnet 
+talrepræsentationer herunder repræsentation af flydende tal og faldgrupper ved regning med flydende tal.
+
+Forberedelse til forelæsningerne:
+Læs Guttag kapitel 5.3 samt noterne om ``Funktionsprogrammering''.
+Læs Guttag kapitel 5.3 samt noterne om ``Funktionsprogrammering'' og om excess N repræsentation at tal.
+
+ I verdensmesterskabsfinalen i speedway
+(væddeløb for lette motorcykler) er der 16 deltagere,
+som konkurrerer 4 ad gangen i ``heats''.  Der er i alt 20 heats,
+og hver kører er med i 5 af dem.  Finalen er tilrettelagt
+således, at hver kører møder enhver anden præcis en gang.
+
+En generalisering af denne situation fører til følgende
+definition:  Ved et bloksystem vil vi i denne
+opgave forstå en mængde af delmængder
+(heatene) udtaget af en mængde V med v elementer
+(kørerne) på en sådan måde, at
+ Der er k elementer i hver delmængde.
+ For alle valg af to forskellige elementer fra V
+er de netop sammen i en af delmængderne.
+
+
+En mængde af delmængder er et bloksystem,
+hvis der findes parametre v og k,
+for hvilke den er et bloksystem.  Navnet kommer af,
+at delmængderne undertiden også betegnes blokke.
+
+B er for eksempel et bloksystem, fordi det er et
+(16,4)-bloksystem.
+
+
+Hvad vi her har defineret, falder under det,
+man kalder et afbalanceret ufuldstændigt bloksystem
+(eng.: balanced incomplete block design eller BIBD):
+
+Et BIBD har tre parametre (v,k,\lambda), idet man mere
+almindeligt kræver, at blokkene ikke nødvendigvis skal
+være forskellige, men at to forskellige elementer fra V
+altid skal optræde sammen i præcis \lambda blokke.
+
+Hvad vi ovenfor har kaldt et ``bloksystem''
+fremkommer med andre ord som specialtilfældet \lambda=1.
+
+BIBD'er blev først bragt i anvendelse ved statistisk forsøgsplanlægning,
+blandt andet ved planteforædling og ved afprøvning af medicinske
+præparater, men har også anvendelse i forbindelse med blandt andet
+fejlfindende og fejlrettende koder i datatransmission.
+
+Problem
+
+At konstruere et bloksystem med ønskede værdier af v og k
+er vanskeligt, og vi vil her betragte den simplere
+opgave at tjekke, hvorvidt en forelagt mængde af delmængder
+nu virkelig også er et bloksystem.
+
+\mathcalB_2, som vises herunder, er for eksempel et bloksystem
+(med parametre v=7 og k=3), mens hverken \mathcalB_3
+eller \mathcalB_4 er det:  I \mathcalB_3 er hvert par
+af de seks elementer ganske vist netop med i en blok ---
+men blokkene er ikke lige lange!  I \mathcalB_4 er hvert
+par af de seks elementer sammen i en blok --- men tre af parrene
+er med i to blokke!
+
+Spørgsmålet om, for hvilke værdier af v og k
+der overhovedet eksisterer et (v,k)-bloksystem,
+er vanskeligt og ikke fuldstændig afklaret.
+(Man kan dog ret let vise,
+at der ikke eksisterer noget (6,3)-bloksystem.)
+
+B er endnu et eksempel på et bloksystem:
+
+Opgave
+
+Definer en funktion is\_BS(\mathitxrr), som for en liste
+\mathitxrr af lister netop returnerer True,
+hvis listen repræsenterer et bloksystem,
+og ellers False.
+
+Opbyg programmet af simple hjælpefunktioner med hver deres
+veldefinerede overskuelige opgave, og beskriv hovedfunktion og
+hjælpefunktioner med passende kommentarer og dokumentationsstrenge.
+
+[Vink: Funktionerne fra opg:Union  og opg:forAll
+kan måske være nyttige,
+ligesom skabelonen ved løsning af 
+måske kan genbruges.
+
+Python-modulet set må ikke benyttes.]
+
+ Skriv en funktion remove\_duplicates(\mathitxr) som tager en liste som argument og returnerer en ny liste 
+der indeholder de samme elementer
+(eventuelt i en anden rækkefølge) som dem,
+der ligger i listen \mathitxr, men hvor funktionsværdilisten
+er dubletfri.
+
+ Definer en funktion platon(\mathitntr), der skal kaldes
+med et argument \mathitntr, som er en liste af tripler af heltal.  Funktionens
+krop skal bruge formatoperatoren (\%), sådan at der
+udskrives en linje for hvert tripel i listen.  Linjernes indhold
+fremgår af dette eksempel:
+
+Funktionskaldet
+
+skal bevirke udskriften
+
+(Bemærk, at formatet bruger to skrivepositioner til hvert heltal.)
+
+to lister, som returnerer
+en liste bestående af de elementer, som er indeholdt i den ene af de
+to argumentlister eller i dem begge.  Funktionen kan forudsætte,
+at hver af de to argumentlister består af lutter forskellige elementer,
+og skal returnere en liste med lutter forskellige elementer.  Hvordan
+funktionen virker, hvis en af (eller begge) argumentlisterne har dubletter,
+er uden betydningDen ønskede funktion kan opfatte
+sine argumenter som repræsentationer af mængder og skal selv virke
+som den mængdeteoretiske foreningsoperator.  Fra version 2.4
+indeholder Python faktisk an klasse set til dette formål,
+og på instanser fra den klasse virker lodret streg (|)
+som foreningsmængdeoperator.  Opgaven skal løses uden
+dette hjælpemiddel, direkte ved arbejde med lister..
+
+For en liste \mathitxrr
+ = [\mathitxr_0, \ldots, \mathitxr_n-1] af lister
+skal funktionskaldet Union(\mathitxrr) returnere
+listen bestående af de elementer, som er indeholdt i en eller
+flere af listerne \mathitxr_i.  Det kan forudsættes,
+at hver af de indgående lister
+\mathitxr_0,\ldots,\mathitxr_n-1 er uden dubletter.
+
+Definer denne funktion Union() ved hjælp
+af union2() fra opgave 
+og en af de indbyggede højereordensfunktioner.
+
+Definer en højereordensfunktion
+forAll(p,\mathitxr) af to formelle parametre
+til undersøgelse af, hvorvidt alle elementer fra en given liste
+opfylder et vist prædikat.  Et prædikat
+er en funktion, som returnerer en sandhedsværdi.
+
+Funktionskaldet forAll(p,\mathitxr) skal returnere
+False, hvis der findes et element x i listen \mathitxr,
+for hvilket p(x) returnerer False, og ellers skal
+forAll(p,\mathitxr) returnere True.
+
+Hvad skal forAll(p,[]) returnere?
+
+ Definer en højereordensfunktion
+transformer(d,g,h)
+af tre formelle parametre, sådan at hvis d er en hashtabel og
+g og h funktioner, vil transformer(d,g,h)
+returnere en hashtabel d', som for hver tilknytning x:y
+i d indeholder tilknytningen g(x):h(y).
+
+transformer(\-1:\ 2, 2:\ -1\, lambda x:\ x*x, abs)
+skal for eksempel returnere \1:\ 2, 4:\ 1\.
+
+Brug transformer() med math.log
+som begge de to transformationsfunktioner
+i forbindelse med plt.plot(),
+parallelleLister()
+og danHashtabel()
+fra ugeseddel 4, og se derved,
+hvordan de transformerede observationer fra
+pattedyr.txt nogenlunde ligger på linje.
+
+ Indsættes et element x i en liste [y_0,\ldots,y_n-1]
+med n elementer, dannes en ny liste af længde n+1,
+og der er n+1 mulige resultater [y_0,\ldots,y_i-1,x,y_i,\ldots,y_n-1]
+afhængigt af, hvilken plads x indsættes på (0\leq i\leq n).
+
+Definer en funktion IndOveralt(x,\mathityr)
+af to formelle parametre, som for et element x og en liste \mathityr
+af længde n
+returnerer en liste bestående af de n+1 forskellige lister af længde n+1,
+som kan dannes ved indsættelse af x i \mathityr.
+
+Prøv dels at løse opgaven ved iteration (med en for-løkke og uden
+rekursive funktionskald), dels i ren funktionsprogrammeringsstil (uden brug af
+gemmesætninger, men kun med rekursive kald og return-sætninger).
+
+ Den største fælles divisor
+(greatest common divisor) for to ikke-negative heltal a og b
+betegnes \gcd(a,b) og har blandt andet disse egenskaber:
+Benyt disse egenskaber til i Python at definere en funktion
+til effektiv beregning af to ikke-negative heltals største fælles divisor.
+
+Plan for ugen
+
+Efter at have stiftet bekendtskab med de forskellige elementer af
+programmeringssproget Python skal vi i denne uge anlægge
+nogle mere overordnede betragtninger og se, hvordan man kan bruge
+programmer til problemløsning.  Mere præcist vil emnerne for
+tirsdagsforelæsningen være programkonstruktion og programverifikation
+og for torsdagsforelæsningen indkøring og afprøvning
+af programmer.
+
+Under programudførelse kan systemfunktioner kaste undtagelser,
+hvis de for eksempel kaldes med parametre af forkert type, med
+meningsløs værdi eller i forkert antal, men vi skal nu se,
+at man også selv kan lade funktioner kaste undtagelser, og at
+man kan konstruere programmer til at gribe undtagelser,
+så de ikke nødvendigvis afbryder beregningsforløbet.
+Kast af
+brugerdefineret undtagelse (sprogelementet raise) diskuteres i denne uge, og
+det vises, hvordan eventuelle undtagelser kastet fra en indre
+programdel kan gribes (sprogelementerne try:/except:).
+
+Tirsdagsforelæsningen kan siges at dreje sig om vekselvirkningen
+mellem programmets dynamiske sætninger på den ene side
+og beskrivelser (i form af logiske udsagn) af de statiske tilstande på den anden.
+Som støtte ved indkøring og afprøvning af programmer
+indeholder Python assert-sætninger
+og den særlige systemvariabel \_\_debug\_\_.
+Vi vil komme ind på specifikation af programmer og programdele
+med forudsætninger (preconditions) og krav (postconditions),
+på såkaldte øjebliksbilleder eller invarianter og
+på programkonstruktion ved trinvis forfining (top down programming)
+eller ved syntese (bottom up programming). 
+
+I yderste konsekvens kunne man forestille sig en egentlig formel verifikation
+af, at programmet opførte sig som ønsket, og opfattelsen af programmer
+som ``prædikat-transformationer'' vil kort blive præsenteret. Også objektorienteret problemanalyse 
+og ``programmering som teori-bygning'' vil blive berørt.
+
+Torsdag omtales intern og ekstern afprøvning, og der gives nogle tip om
+afprøvningsstøttet programmering, ``unit testing'' og ``reviews''.
+Desuden præsenteres den obligatoriske opgave (spillet Life).
+
+[Til tirsdag:]~\\
+Læs Guttag kap. 6 og 7, samt side 91 fra Beazleys bog
+(findes under ``Undervisningsmateriale''
+som ``Python Essential Reference'')
+samt beskrivelsen af programverifikation på adressen
+
+[Til torsdag:]~\\
+  Læs
+Steve McConnells kapitel: Reviews in Software Quality Assurance og
+Anders Borums noter (findes under ``Undervisningsmateriale'' som henholdsvis ``Reviews'' og ``Afprøvning'').
+
+Læs også beskrivelsen af John Horton Conways spil Life
+på Wikipedia på adressen
+
+I Scientific American for oktober 1970 beskrev den britiske
+matematiker John Horton Conway ``spillet'' Life, hvor kunstige
+organismer optager de kvadratiske celler i et ubegræset
+kvadratisk gitter.  Spillet udvikler sig i skridt, man kunne kalde
+``generationer'', idet hver kvadratisk celle i en bestemt generation
+befinder sig i en ud af to mulige tilstande, vi kan kalde ``levende''
+eller ``død''.
+
+Hver kvadratisk celle har otte naboer, nemlig de celler, med hvilke
+den har en kant eller et hjørne fælles, og cellens tilstand
+i en vis generation er entydigt bestemt af dens og dens naboers tilstand
+i foregående generation efter følgende regler:
+ Hvis en levende celle har netop to eller tre levende naboer,
+overlever den til næste generation, og ellers dør den.
+ Hvis en død celle har netop tre levende naboer, fødes
+den til live i næste generation, men ellers forbliver den død.
+De beskrevne regler anvendes parallelt på alle celler, hvorved
+hver generation bestemmes af den foregående generation,
+og hele spillet entydigt udvikler sig med en startgeneration som kim.
+
+Det viser sig, at disse regler er meget velvalgte, idet startgenerationer
+kan udvikle sig yderst forskelligt:  Nogle vil være stabile eller
+periodiske, nogle uddør efter et vist antal
+generationer, og andre bevæger sig eller ekspanderer.
+
+Se eventuelt mere på
+
+Overvejelser
+Opgaven har følgende elementer, som leder frem til et system til
+visualisering af spillet Life:
+
+ Beslut en form, under hvilken en generation af spillet kan
+repræsenteres i Python.  Det kunne for eksempel være
+som en liste af lister, en liste af koordinatpar, en hashtabel
+af koordinatpar eller som en værdi af typen set
+(se nærmere i dokumentationen af Python om set).
+
+ Af praktiske grunde lader det sig kun gøre at vise
+et rektangulært udsnit af det principielt uendelige kvadratgitter.
+Det er derfor nødvendigt at beslutte, hvorledes celler skal opføre
+sig ved randen af det rektangulære udsnit.  Her er nogle forslag:
+ Man kunne vælge kun at lade reglerne gælde inden for
+udsnittet (så der aldrig blev født celler udenfor).
+ Man kunne lægge udsnittet omkring de levende celler, så
+rektanglet skrumpede eller (i det omfang, der var plads på skærmen)
+udvidede sig efter behov.  Måske skulle rektanglets grænser
+så indgå som komponent i repræsentationen af en generation.
+ Man kunne identificere modstående kanter, svarende til, at
+spillet foregik på en torus (ring).  Hvis rektanglet havde m
+rækker og n søjler, nummereret henholdsvis 0,1,\ldots,m-1
+og 0,1,\ldots,n-1, svarer det beregningsmæssigt til, at man
+placerer en celle, der logisk hørte hjemme på plads
+(i,j), inden for rektanglet
+på den faktiske position
+
+Hjælpefunktion
+For at gøre det let for kursusdeltagerne at fremstille udviklingen
+under et spil Life grafisk stiller vi funktionen visLife
+til rådighed.  Dette er en højereordensfunktion, som skal kaldes
+på formen
+skal være funktioner, der kan kaldes på følgende måde:
+
+Et sådant kald (uden parametre) skal beregne spillets startgeneration
+og som funktionsværdi
+returnere et kvadrupel
+der markerer udstrækningen
+af det rektangel, inden for hvilket de levende celler skal vises.
+Rektanglet kommer til at bestå af kvadrater med koordinater.
+
+[naeste()]
+Et sådant kald (uden parametre) skal beregne næste generation
+og som funktionsværdi
+returnere et kvadrupel
+der på samme måde som for foerste markerer udstrækningen
+af det rektangel, inden for hvilket de levende celler skal vises.
+
+[levende(i,j)]
+Idet i og j skal have heltallig type, skal returværdien være
+True, hvis cellen på plads (i,j) er levende,
+og ellers False.
+
+
+Funktionskaldet visLife(foerste,naeste,levende) åbner
+på skærmen et vindue (canvas), i hvilket spillet kan
+udvikle sig, og derefter gælder følgende:
+
+Kvadratnettets udstrækning bestemmes ved hjælp af et 
+indledende funktionskald
+hvorefter gitteret tegnes.  Desuden tegnes den første
+generation, idet cellers status afgøres af funktionskald.
+
+
+Funktionen visLife animere spillets generationer i diskrete skridt ved for hvert skridt at kalde naeste(). Dette kald 
+medfører at visLife tegner næste generation, idet status for celler inden for
+rektanglet afgøres af kald af formen levende(i,j) på samme
+måde som ved startgenerationen.
+Ved at lukke tegnevinduet vil kaldet
+af visLife afslutte og få tegnevinduet til at forsvinde.
+
+
+[Note: Funktionen visLife er implementeret som en klasse og det er konstruktørmetoden vi kalder --- mere om det i 
+uge 47 - 48. Her kan vi blot betragte visLife som en hvilken som helst anden funktion.]
+
+Program
+Opgaven besvares med et Python-program, som
+indledes med kommentarer eller tekststrenge,
+der gør rede for de trufne beslutninger med hensyn til
+repræsentation og udsnitsrektangel.
+
+Derefter følger de definitioner og størrelser,
+der skal benyttes til repræsentation af en generation
+af spillet, og de tre beskrevne funktioner
+foerste, naeste og levende defineres.
+
+Selv om disse funktioner ikke eksplicit har repræsentation
+af spillet som en af deres funktionsparametre, er det klart,
+at deres funktionskroppe må afhænge af denne repræsentation.
+
+Husk, at hvis en funktion ikke kun konsulterer en udefrakommende
+global variabel, men også har brug for at ændre den,
+kan det være nødvendigt med en global erklæring.
+
+Funktionen visLife er indeholdt i filen
+kursusuge6modul.py, der ligger på kursets Absalon-side
+under Ugesedler og opgaver \rightarrow Ugeseddel .
+Hent denne fil ned til din egen computer, og placer den i
+det samme katalog som det, hvori programmet til besvarelse af opgaven
+ligger.  Efter programlinjen
+vil visLife være til rådighed.  (Første gang,
+modulet benyttes, sørger systemet for, at det bliver oversat,
+og filen kursusuge6modul.pyc med det oversatte program
+vil også dukke op i kataloget.)  Opgaveløsere kan modificere
+modulet efter forgodtbefindende; det vil for eksempel være
+enkelt at ændre cellernes størrelse eller valget af farver.
+
+Ved vurdering af opgavebesvarelser vil der blive lagt vægt på
+en omhyggelig og systematisk afprøvning.  Vi anbefaler, at hver af de
+tre hjælpefunktioner afprøves grundigt hver for sig (det, som
+kaldes unit test), inden de forsøges indsat i visLife.
+
+Ved kørsel af opgavebesvarelsens program skal spillet Life starte med følgende konfiguration af levende celler:
+Det er tilladt at inkludere yderligere start konfigurationer i besvarelsen. Dette kan eksempelvis gøres ved at bede brugeren 
+vælge mellem konfigurationer ved indtastning på tastaturet.
+
+Tirsdagsøvelser
+
+Definer en funktion graenser(\mathitxys), der med en liste af talpar
+returnerer et kvadrupel
+med de mindste og de største forekommende værdier af x og y.
+og hvert af de fire lighedstegn skal antages for mindst \'en værdi af i.)
+
+Hvis listen er tom (n=0), skal funktionen returnere kvadruplet (1,0,1,0).
+
+Til administration af mængder, hvis indhold ændrer sig
+dynamisk under programudførelse, defineres fire funktioner med følgende
+virkning:
+
+[empty():] Returnerer (en repræsentation af)
+den tomme mængde \emptyset.
+[insert(g,x):] Skal ændre g til at repræsentere
+M\cup\x\, hvis g tidligere repræsenterede M.
+[member(g,x):] Returnerer True eller False
+efter som x\in M eller x\notin M, hvor g repræsenterer M.
+[toList(g):] Returnerer en liste bestående af elementerne i
+(mængden repræsenteret af) g.
+\enddescription
+OBS.: Et forslag til, hvorledes disse funktioner kunne implementeres,
+stilles sidst i
+denne opgaveformulering, men i første omgang er det meningen, at man kun
+skal bygge på beskrivelsen ovenfor og ikke udnytte nogen konkret implementering.
+
+Definer funktionen fromList(\mathitzr), der kaldt med en liste
+[z_1, z_2, \ldots, z_n] af elementer som argument returnerer
+(en repræsentation af) mængden bestående af disse elementer.
+Funktionskroppen skal benytte de ovennævnte funktioner empty()
+og insert() uden at bygge på, hvordan de er implementeret.
+
+En naiv implementering af funktionerne:
+I denne opgave betragtes igen de fire funktioner empty(),
+insert(), member() og toList()
+fra opg:fromList, men for at undgå de langsommelige lineære
+listegennemløb besluttes det at bruge en hashtabel snarere end en liste
+som mængderepræsentation.  Mere præcist skal hashtabellens nøgler
+netop være mængdens elementer, mens tabellens værdier simpelt
+hen for samtlige opslag skal være True.
+
+Funktionen insert() programmeres nu for eksempel
+
+Programmer de øvrige tre funktioner.
+
+Torsdagsøvelser
+
+Ud fra et ønske om også at kunne fjerne elementer fra de
+mængder, der opereres på, specificeres funktionen
+
+Giv både en Python-definition af delete() for den
+naive mængdeimplementering foreslået i opgave opg:fromList
+og for implementeringen som hashtabel fra opgave opg:hashtab.
+
+ Konstruer afprøvningsdata for funktionerne empty(),
+insert(), delete(), member() og toList()
+fra opgaverne opg:fromList og opg:delete, og
+afprøv implementeringen af mængder som hashtabeller
+(foreslået i opgave opg:hashtab og opg:delete).
+
+ Konstruer afprøvningsdata for funktionen graenser()
+fra opgave opg:graenser, og afprøv den.
+
+En generation under spillet Life repræsenteres
+som mængden af levende celler.  Intentionen med nedenstående funktion
+naboer() er, at den skal optælle antallet af levende celler
+i 3\times3-kvadratet omkring et givet punkt, men den her viste definition
+er behæftet med en række fejl.  Find og ret disse fejl.
+En generation under spillet Life repræsenteres som mængden af levende
+celler, funktionerne empty(), insert(), member()
+og toList() er defineret i opgave opg:fromList eller opg:hashtab,
+graenser() i opgave opg:graenser,
+naboer() i opgave opg:naboer
+og fromList() i opgave opg:fromList.
+
+Brug de nævnte funktioner til at definere funktionen next(g),
+som returnerer næste generation af spillet efter generationen g.
+
+Betragt startkonfigurationen
+
+Udregn i hånden på et ark kvadreret papir et par af de
+efterfølgende generationer, og test den konstruerede funktion
+med kald som for eksempel.
+
+For bedre at få indtryk af bevægelsen kan man
+føje en stabil blok som for eksempel
+[(-1,-2), (-1,-3), (-2,-2), (-2,-3)]
+til startkonfigurationen.
+
+Plan for ugen
+
+I denne uge tager vi fat på et nyt emne, nemlig numeriske metoder og vi starter med at fokusere på numeriske metoder til 
+integration. Numerisk integration er relevant i situationer hvor vi ikke kan evaluerer integralet af en funktion analytisk og derfor må ty til en numerisk metode til at få en tilnærmelse, en såkaldt approksimation, til værdien af integralet. Vi vil kigge på metoder baseret på Riemannsummer samt en metode kaldet Monte Carlo integration.
+
+Dertil vil vi gennemgå relevante emner indenfor computerarkitektur, styresystemer og programlagdeling.
+Desuden omtales pseudotilfældige tal (biblioteket random) og genererering af sådanne i Python.
+
+[Til tirsdag:]~\\
+  Læs noter om numerisk integration af Knud Henriksen.  Læs  også noterne om Pseudotilfældige tal.
+
+[Til torsdag:]~\\
+  Læs noter om numerisk integration af Knud Henriksen.  Læs  også noterne om Pseudotilfældige tal.
+
+Lad f:[a,b]\to \R være en kontinuert funktion og lad \int_a^b f(x) dx være dens integrale. 
+Denne opgave går ud på at undersøge Riemannsummer, som konvergerer mod integralet. 
+
+Først laves en partition af intervallet, dvs. intervallet inddeles i n stykker, så a=t_0<t_1<t_2\dots < t_n=b. Som det næste 
+approksimeres integralet af funktionen f som summen af arealerne på alle rektangler, der fremkommer ved at tegne en streg 
+fra højre til venstre endepunkt for hvert interval [t_i-1,t_i], i=1,\dots,n. Mere præcist, er en Riemannsum givet ved
+Skriv en funktion rInt(f,a,b,n), der beregner Riemannsummen givet en funktion f, et startpunkt a, et slutpunkt 
+b og et antal knudepunkter n. Knudepunkterne skal vælges equidistante, dvs. t_i-t_i-1=t_j-t_j-1 for alle i og j 
+mellem 1 og n.
+
+Afprøv funktionen rInt(f,a,b,n) ved at skrive et program som benytter funktionen med følgende testfunktioner:
+Skriv en ny funktion rIntMid(f,a,b,n), der beregner Riemannsummen givet en funktion f, et startpunkt 
+a, et slutpunkt b og et antal equidistante knudepunkter n. Integralet skal i nu approksimeres ved at beregne
+Afprøv funktionen rIntMid(f,a,b,n) på testfunktionerne fra iopgave1(b).
+Udvid dit program til at inkludere, for hver testfunktion i iopgave1(b), et grafisk plot som viser 
+resultatet af de to integrationsmetoder rInt(f,a,b,n) og rIntMid(f,a,b,n) som funktion af antal intervaller n. 
+Dvs. at x-aksen af grafen skal svare til  n og y-aksen skal svare til resultatet af integrationsmetoden, og 
+grafen skal inkludere plottene for både rInt(f,a,b,n) og rIntMid(f,a,b,n).
+
+Hvor stort n skal der vælges for at få en rimelig approksimation for hver testfunktion?
+Forbedrer funktionen rIntMid(f,a,b,n) dine resultater i forhold til rInt(f,a,b,n)?
+Besvar disse spørgsmål samt kommenter på graferne skriftligt i PDF filen.
+
+
+Begge funktioner rInt(f,a,b,n) og rIntMid(f,a,b,n) samt program skal dokumenteres med docstrings 
+og passende kommentarer.  Dertil skal der foretages en struktureret afprøvning af funktionerne og dette skal dokumenteres ved 
+at programmet udprinter resultater af afprøvningen samt en kortfattet beskrivelse som afleveres i PDF filen.
+
+[Hint: Ved afprøvningen af de to funktioner, kan det være en god ide at finde nogle funktioner hvor du kender integralet analytisk 
+og let kan udregne resultatet af approksimationen (dvs. enten (rint) eller (rintmid)) i integrationsmetoden. Du kan eksempelvis udregne følgende integraler analytisk og i hånden finde værdierne for 
+Tirsdagsøvelser
+
+Skriv en funktion linspace(a, b, n) som tager en start a og slut b værdier for et interval og returnere en liste 
+L med n elementer hvor intervallet [a,b) er inddelt i n dele med lige stor afstand i mellem hver del, således at
+L_i-L_i-1=L_j-L_j-1 for alle i og j mellem 1 og n.
+
+ Anvend matplotlib.pyplot og funktionen linspace(a, b, n) fra opgave  linspace til at skriv et program som viser grafer af testfunktionerne fra 
+iopgave1(b) i de angivne intervaller for x. Grafen skal indeholde passende akse tekster og en titel.
+
+ Pseudo-tilfældige talgeneratorer, som Pythons indbyggede random modul, er ofte deterministiske algoritmer. Det 
+betyder at man ved samme start tilstand for generator algoritmen altid vil få den samme sekvens af tal. Når man arbejder med 
+tilfældige talgeneratorer kan det være svært at afprøve sine programmer, så det kan være en fordel at 
+kunne fastsætte tilstanden for talgenerator algoritmen. Pythons indbyggede random modul initialiseres således at 
+random algoritmen har forskellige start tilstande ved hver opstart af Python. Men modulet giver mulighed for at fastsætte 
+start tilstanden, det såkaldte seed, via funktionen random.seed(x). Åben to terminal vinduer og start Python i hver af 
+disse. Importer nu  random modulet i begge Python instanser med kaldet import random. Kald funktionen random.random() i begge Python 
+instanser og bemærk at talene er forskellige og tilsyneladende tilfældige. Prøv derpå at sætte seed x=42 med kaldet 
+random.seed(42). Hvad sker der nu hvis du kalder random.random() i begge Python 
+instanser?
+
+Brug funktioner fra modulet random
+til at definere en funktion terningkast(n) af en formel
+parameter, som simulerer n kast med en fair terning og returnerer
+listen [None, a_1, \ldots, a_6],
+hvor a_i er antallet af de n kast, som gav i øjne. Den returnerede liste repræsentere en såkaldt frekvenstabel.
+
+Torsdagsøvelser
+
+Et histogram er en grafikfremstilling af en frekvenstabel. Skriv en funktion hist(frek) som tager en 
+frekvenstabel, repræsenteret som en liste af tal, som parameter og laver et grafisk histogram af frekvenstabellen. Histogrammet 
+skal vises ved hjælp af matplotlib.pyplot.hist ved at plotte punkter (i, a_i), hvor i er den i'te indgang i 
+frekvenstabellen og a_i repræsenterer frekvensen for denne indgang.
+Prøv at anvend funktionen hist(frek) på resultat listen fra 
+funktionen terningkast(n) fra opgave terning.
+
+ Funktionen random.gauss(0, 1) returnere et tilfældig tal som er fordelt efter normalfordelingen. Anvend denne 
+funktion til at skrive et program som genererer en liste af tilfældige normalt fordelte tal og derpå viser et histogram af listen. 
+
+Du kan vælge at anvende din løsning til funktionen hist(frek) i opgave  hist eller at anvende 
+matplotlib.pyplot.hist.
+
+ Skriv en funktion evalfunc(f, xx) som evaluerer funktionen f(x) i tallene i listen xx. Afprøv funktionen ved at 
+opbygge en liste af tal xx ved at simulerer ligefordelte tilfældige tal med random.uniform. Som testfunktioner kan 
+anvendes funktionerne fra opgave iopgave1(b). Lav en graf for hver testfunktion som viser parrene 
+(x_i, f(x_i)) som punkter.
+
+Vi forsøger i denne opgave at approksimere et integrale ved hjælp af tilfældige tal. Vi kan få computeren til at simulere et antal 
+af ligefordelte tal i et interval, eksempelvis [0, 1]. I Monte Carlo integrationsmetoden betragter vi integralet
+og approksimere dette ved at udtrække n tilfældige ligefordelte tal \x_1, x_2, \ldots, x_n \ i intervalet [0, 1] og derpå 
+beregne gennemsnittet af funktionsværdien i de tilfældige tal
+
+Når vi vil beregne værdien af et bestemt integrale
+
+kan dette gøres ved at substituere y=(x-a)/(b-a), hvilket giver
+
+Skriv et program mcInt(f,a,b,n), der beregner integralet I_f ved at anvende Monte Carlo integrationsmetoden, dvs. ved 
+at simulere tilfældige værdier fra en ligefordeling (random.uniform(0,1)) og tage gennemsnittet af de simulerede 
+værdier, hvor n betegner antallet af simuleringer. 
+ 
+Afprøv samme testfunktioner som i opgave iopgave1(b). Hvor mange punkter skal der bruges ift. opgave 
+iopgave1(b)? 
+
+ Et uegentligt integrale, er et integrale, hvor vi integrerer op til uendeligt. Dvs.
+
+Sådanne integraler kan vi også beregne ved at substituere y=1/(x+1) og derved få
+Brug nu det uegentlige integrale til at beregne integralet af normalfordelingen ved hjælp af Monte Carlo 
+integrationsmetoden som beskrevet i opgave MonteCarlo. Du må gerne bruge, at \phi er symmetrisk 
+omkring 0, dvs. 
+
+Plan for ugen
+
+I denne uge tager vi fat på optimering, hvilket kort sagt svarer til at minimere eller maksimere en funktion, dvs. finde punkter hvor funktionen antager et lokalt eller globalt minima eller maksima. For en endimensionel funktion f(x) ved vi at et ekstremum kan findes blandt rødderne som fremkommer ved at løse f'(x) = 0. For flerdimensionelle funktioner f(x_1, x_2, \dots, x_n) er dette mere kompliceret og man anvender istedet optimeringsalgoritmer til at finde et minima/maksima. De mest generelt anvendelige optimeringsalgoritmer er iterative metoder, som trinvist søger gennem løsningsrummet, hvor der for hvert trin bliver taget en beslutning om retning og afstand, baseret på bl.a. egenskaber ved det nuværende ståsted. Billedligt talt kan løsningsrummet ses som et bjerglandskab og algoritmen en bjergvandrer på udkig efter den første og bedste dal (lokalt minimum) eller den aller dybeste af alle (globalt minimum), hvis næste trin f.eks. afgøres af landskabets hældning. De mange iterative optimeringsalgoritmer kan typisk kategoriseres som enten deterministiske (lokale) eller stokastiske (globale), hvor de deterministiske udelukkende er baseret på funktionens første- og andenordens afledte, mens de stokastiske indkorporerer tilfældigheder i valget af rute genem løsningsrummet. På turen gennem bjerglandskabet vil de deterministiske metoder for hvert trin vælge den retning, som set lokalt omkring det nuværende ståsted går mest ned ad bakke. Hvis vi allerede er tæt på den ønskede dal er dette den hurtigste måde at komme nedad, men vi risikerer også at sidde fast i et lille hul oppe i bjergene. Risikoen for at sidde fast i sådan et lokalt minimum er mindre ved de stokastiske metoder, hvor retning og skridtstørrelse for næste trin afgøres udfra informationer om landskabet længere væk fra nuværende ståsted, uden dog at have undersøgt alle muligheder i den afstand, men baseret på et par tilfældige retninger. Dette svarer til at kunne se udover det lille hul på bjerget, men ikke nødvendigvis tage den helt optimale rute ud af hullet. Dertil tager det potentielt længere tid at nå ned i dalen, da bjergvandreren har en tendens til at zig-zagge på sin vej.
+
+Centralt for ugeopgaven og øvelserne i denne uge er metoden gradient descent. Gradient descent er en deterministisk optimeringsalgoritme der kan bruges til at finde minima af en funktion f, dvs. at løse \undersetx\operatornamearg min f(x), for x \in \mathbbR^n. Bemærk at vi med de deterministiske metoder kun kan garantere et globalt minima hvis f er konveks; ellers et lokalt. Gradient descent opdaterer iterativt et bud på det x der minimerer f:
+hvor \tau_k > 0 er en skalarværdi for skridtstørrelsen,  x_k er det nuværende punkt (ståsted), x_k+1 det næste punkt og \nabla f(x_k) gradienten i nuværende punkt, givet ved
+som udgør en vektor der peger i retningen af den største stigning. Ved at tage et skridt i retningen af den negative gradient, foretager vi således en nedstigning. Som standard sættes skridtstørrelsen manuelt, men kan også estimeres i hver iteration. Beregnes den bedst mulige skridtstørrelse, kaldes metoden for steepest descent.
+
+Data indsamlet fra den virkelige verden vil typisk være repræsenteret i en diskret form, dvs. indsamlet i diskrete punkter. Selvom man eventuelt kunne udlede en korresponderende, kontinuert funktion, viser det sig ofte mere effektivt at arbejde direkte på den diskrete data og anvende numeriske metoder til at beregne på den. Et godt eksempel på diskret data er billeder. Et 2d billede er indsamlet i diskrete dataenheder kaldet pixels og kan repræsenteres som en diskret billedfunktion I(x,y), som tager en position i billedet (x,y) og returnerer en farveintensitet for den tilsvarende pixel. Farveintensiteten har typisk en værdi mellem 0 og 255, hvor høje tal svarer til lyse farver. Dette er illustreret nedenfor, hvor et gråtonebillede (venstre) er plottet som en diskret funktion (højre), med en kunstig farveskala for at tydeliggøre funktionens struktur:
+
+I forbindelse med optimeringsalgoritmerne skal vi arbejde med diskrete, todimensionelle funktioner, heriblandt billeder, og skrive numeriske metoder til at beregne på disse funktioner. I Python kan et billede f.eks. repræsenteres ved en liste af lister, dvs.
+for et billede med n rækker og m søjler. Erklæres i Python listen af lister imageList kan man således tilgå intensitetsværdien i punktet (x,y) = (3,5) ved at kalde (mImageList[3])[5]. Billedet kan plottes ved at kalde
+
+[Til tirsdag:]~\\
+Læs: Numerical Optimization, kap. 1: Introduction (noter)\\
+  Til forelæsningen gennemgåes: 
+ Introduktion til optimering
+ Multidimensionelle funktioner og deres afledte
+ Konveksitet, lokale og globale ektremum
+ Deterministiske (lokale) optimeringsalgoritmer
+[Til torsdag:]~\\
+ Læs: Guttag kap. 13 (Random walks) og 14 (Monte Carlo simulation).\\
+Til forelæsningen gennemgåes:
+
+ Deterministiske (lokale) optimeringsalgoritmer (fortsat)
+ Stokastiske (globale) optimeringsalgoritmer
+
+ I denne opgave skal I arbejde med den deterministiske optimeringsalgoritme gradient descent samt et klassisk problem fra billedbehandling; at fjerne støj i et billede.
+
+
+Gradient og divergens i billeder
+
+Lad I(x,y) være en diskret 2d billedfunktion som beskrevet tidligere. For at simplificere antager vi at I(x,y) har samme antal pixels N i bredden og højden. Vi vil nu se på hvordan lokale differentialoperatorer som gradienten og divergensen kan bruges til at beskrive bestemte egenskaber ved billedet og hvordan operatorerne beskrives diskret. Hvor en kontinuert funktion f \in \mathbbR^2 har gradienten \nabla f(x_i,y_j) = \left( \frac\partial f\partial x(x_i,y_j), \frac\partial f\partial y(x_i,y_j)\right) \in \mathbbR^2 i punktet (x_i,y_j), kan den korresponderende diskrete gradientoperator defineres for billedet I(x,y) som 
+hvor
+for i,j = 1, \dots, N. \nabla I(x_i,y_j) består således af to gradientbilleder \nabla I_x(x_i,y_j) og \nabla I_y(x_i,y_j). I Python kunne man f.eks. skrive \nabla I_x(x_i,y_j) ved at løbe gennem alle billedelementerne:
+hvor imageList er I(x,y) repræsenteret som en liste af lister og imageListDx tilsvarende for \nabla I_x(x_i,y_j). 
+
+Betragt billederne på Fig.~fig1. På Fig.~a ses det originale billede og på Fig.~b og c de partielt afledte \nabla I_x(x_i,y_j) og \nabla I_y(x_i,y_j), henholdsvist. Bemærk hvordan gradienten fanger kanterne i billedstrukturen.
+ Tilstedeværelsen af kanter tydeliggøres yderligere i Fig.~d, som illustrerer normen (længden) af gradienten, givet ved operatoren
+der returnerer et billede hvor en lys farve indikerer en høj intensitetsværdi, reflekteret af en lang gradient og derved en stejl kant i det originale billede. På gradientbillederne (eller andre billeder hvis værdier beskriver retninger) kan man yderligere tage divergensen, en operator \rm div = -\nabla^* som i sin diskrete form er givet ved
+og som fortæller i hvor høj grad retningerne omkring (v(x_i,y_j), w(x_i,y_j)) konvergerer (peger ind mod punktet) eller divergerer (peger væk fra punktet), hvor v(x_i,y_j) og w(x_i,y_j) kan erstattes med gradientbillederne.
+Gradient- og divergensoperatorerne er meget nyttige for detektionen af f.eks. kanter, højderygge og ekstrema i billeder.
+
+For at løse opgaven skal du bruge følgende data (læg filerne i samme folder som dit Python program):
+ Filer med billeddata Cameraman.csv og CameramanNoisy.csv
+ Python filen csvImageRead.py
+
+ Indlæs billedet cameraman.csv v.h.a funktionen csvImageRead.py, der returnerer pixelværdierne i en liste af lister:
+Det skal derudover afprøves om pixelværdierne er mellem 0 og 255, samt at bredden af billedet er lig højden. Plot billedet (hint: som beskrevet i introduktionen).
+ Skriv en funktion gradient(V) der tager et billede (en liste af lister) og returnerer gradienten i form af de to partielt afledte dVx og dVy, også repræsenteret som billeder, som beskrevet i (gradx) og (grady) - hent inspiration fra kodeeksemplet lige nedenunder formel (grady). Beregn gradienten af det indlæste billede (a), plot de resulterende billeder og tjek efter at de ser ud som i Fig.~b og c.
+ Skriv en funktion gradNorm(V1, V2) der tager to gradientbilleder og returnerer normbilledet som beskrevet i (norm). Beregn normen af gradienten af det indlæste billede (se punkt (a)-(b)) og plot resultatet. Tjek at det ser ud som på Fig.~d.
+ Skriv en funktion divergence(V1, V2) der tager to billeder og returnerer divergensen i et billede divV, som beskrevet i (div). Beregn divergensen af gradienten af det indlæste billede (se punkt (a)-(b)) og plot resultatet. Beskriv hvilke egenskaber i billedet, \rm div \nabla fanger.
+ Indlæs nu billedet CameramanNoisy.csv som i (a): 
+Dette billede er, som illustreret nedenfor, billedet fra før pertuberet med støj:
+
+Opgaven er nu at fjerne støjen fra billedet ved hjælp af (a)-(d) samt gradient descent metoden. Lad os sige at y er det diskrete, støjfyldte billede af størrelsen N \times N. Man kan da reducere støjen ved at minimere funktionen
+hvor x er det støjreducerede billede og J(x) \in \mathbbR et udtryk for x's glathed, baseret på gradienten. Vi finder altså x som det billede med den minimale afstand til y, som samtidig har glatheden fordret af det regulerende udtryk \lambda J(x), hvor \lambda > 0 bestemmer udtrykkets indflydelse. Optimeringen af billedet x (min1) kan letteregøres ved istedet at optimere
+hvor W er en særlig type billede (kaldet vektorfelt), der ligesom gradienten indeholder information om bevægelsesretninger, og relaterer til x som
+Kort forklaret er \rm div(W) et led som fjerner 'uglatheder' fra y, størrelsen af hvilke reguleres af \lambda > 0. 
+I skal nu finde x ved at minimere (min2) via gradient descent som beskrevet tidligere. Dertil har I brug for gradienten til (min2), som er givet ved
+Implementer algoritmen med følgende trin:
+[1)] Indlæs det støjfyldte billede CameramanNoisy.csv (se punkt (e)) i variablen y og gem bredden i N
+[2)] Sæt skridtstørrelse tau = 0.248 og regulering lambda = 0.08
+[3)] Kreer to N \times N billeder w1 og w2 som kun indeholder 0'er og beregn divergensen divW af dem (d). w1 og w2 repræsenterer W.
+[4)] Beregn billedet \lambda y (multiplikationen af \lambda med alle billedværdierne i y) og gem det i ylambda
+[5)] I 200 iterationer, gør:
+	[5.1)] Beregn gradientbillederne dWx, dWy for \nabla \left(\lambda y - \rm div(W) \right) (dw), ved at kalde gradient(V) (b) på h.h.v. divW og ylambda (det er vigtigt at beregne disse gradienter separat!)
+	[5.2)] Beregn normen dWnorm af gradienten dWx, dWy v.h.a gradNorm(V1, V2) (c)
+	[5.3)] Foretag descent skridt (grad) på w1 og w2 v.h.a. dWx, dWy og tau. Normaliser w1 og w2 ved at dividere værdierne med (1 + dWnorm*tau)
+	[5.4)] Opdater divW med w1 og w2 (d)
+[6)] Få det resulterende billede x v.h.a. (w) og plot det
+ Algoritmen (e) skal udvides med et trin (5.5) der beregner og gemmer værdien af udtrykket i (min2) for hver iteration, i en liste. Hint: beregn normen i udtrykket som ||v(x,y) - w(x,y)||^2 = \sum_i^N \sum_j^N (v(x_i,y_j)-w(x_i,y_j))^2. Plot resultatet som en graf. Opfører det sig som forventet?
+ Hvad er effekten ved at variere størrelsen på \lambda i algoritmen (e)?
+
+Tirsdagsøvelser
+
+En kontinuert funktion f(x, y) = x^2+y^2 kan diskretiseres og plottes i Python som f.eks. (hvad der sker i koden bliver forklaret senere på kurset):
+og de diskrete billedværdier kan herefter fås som en liste af lister ved at kalde Z.tolist().
+
+ Diskretiser og plot funktionen f(x, y) = x^2+y^2 som vist ovenfor. Beregn gradientbillederne ved at skrive funktionen gradient(V) som det også bedes om i ugeopgave (b), og kalde den med Z.tolist() (hint: læs opgaveteksten først). Plot gradientbillederne. Beskriv relationen mellem værdierne i gradientbillederne og f, herunder position af minimum.
+ Implementer den basale gradient descent mimimering af f som i (grad), ved at bruge gradient(V) til at beregne \nabla f. Vælg en startposition (x_0,y_0), fast skridtstørrelse \tau samt antal iterationer. Gem positionen opnået i hvert skridt og plot dem ovenpå overfladen for f. Et eksempel på plotning af punkter er
+Her skal x, y og z skiftes ud med skridtkoordinaterne og kaldet til ax.scatter(x, y, z, c='r', marker='o') indsættest lige før plt.show(). Argumenter for om det globale minima blev fundet (hint: brug den kontinuerte afledte af f). Beskriv hvordan valget af skridtstørrelse, antal iterationer og startposition hver for sig har indflydelse på om minima kan nås.
+ Indfør et passende konvergenskriterie istedet for et fast antal iterationer (f.eks. 1) kriteriet for den afledte i et punkt, 2) om skridtene konvergerer til det samme punkt), og kør minimeringen igen. Gem energien (værdien af f(x^*,y^*) for det nuværende minima (x^*,y^*)) for hver iteration og plot energierne efter konvergering som en graf.
+ Kør nu minimeringen på den diskretiserede f(x, y) = \fracx-yx^2+y^2+2. Plot funktionen med skridt og det fundne minimum. Hvordan har startpositionen en indflydelse på om det globale minima kan findes?
+
+Torsdagsøvelser
+
+Vi fortsætter med øvelserne fra tirsdag (start med dem hvis du ikke blev færdig).
+ Gradient descent algoritmen fra sidste opgave kan udvides til at beregne en passende skridtstørrelse for hver iteration. Steepest descent er en sådan metode, hvor skridtstørrelsen \tau_k i hvert skridt findes som minima af
+Skriv en forsimplet version af \varphi(\tau_k) hvor \tau_k findes som den ud af 10 forskellige værdier, der giver den stejleste nedstigning. Kør algoritmen på f(x, y) = x^2+y^2 og plot energi-grafen. Hvad sker der for konvergensraten?
+ Gradient-baserede og andre lokale minimeringsalgoritmer er sensitive overfor lokale minima. Forklar hvorfor?
+ Diskretiser og plot Rosenbrock funktionen f(x,y) = (1-x)^2 + 100(y-x^2)^2 på samme måde som i de foregående øvelser. Det har sit minima i (x,y) = (1,1). Kør gradient descent og steepest descent minimeringsalgoritmerne og plot skridt samt konvergering. Hvorfor er det svært at finde minima for denne funktion for de gradient-baserede metoder (hint: kig på gradienterne)?
+ 
+Plan for ugen
+
+Denne uge tager vi fat på et nyt emne: Algoritmer og beregningskompleksitet. De fleste kender til problematikken at et program, som kører fint på een computer, opfører sig yderst problematisk på en anden. Det kunne være et videofremvisningsprogram, der på den ene computer gør som det forventes - afspiller videoen - men på den anden hakker og viser billederne i en grov opløsning. Når programmer kører uoptimalt er det naturligt at undersøge ressourcerne - er det en kraftig nok CPU? Måske mangler der hukommelse? Det kunne også være man skulle anvende et andet styresystem? Faktisk kunne jeg godt bruge en ny computer....o.s.v. Lad os nu sige, at to forskellige programmer med den samme funktion klarer sig vidt forskelligt på den samme computer. Det kunne på den ene side have noget at gøre med, hvordan de to programmer bruger ressourcerne på computeren, men det kunne på den anden siden også have noget at gøre med hvor effektivt de to programmer udfører deres opgave. Dette svarer til at stille spørgsmålene:
+ Hvor mange gange bliver CPU'en bedt om at udføre en instruktion?
+ Hvor meget lagerplads bruger programmet, og hvor ofte tilgås det?
+Disse spøgsmål er helt centrale i algoritmisk beregningskompleksitet, der handler om at sammenligne algoritmer på ide-niveau - at fastsætte kompleksiteten af en algoritmerne uafhængigt af programmeringssprog, hardware og CPU instruktionssæt. I kompleksitets- eller køretidsanalyse udledes antallet af beregningsskridt i en algoritme, hvilket kan være f.eks. tildeling af en værdi til en variabel, opslag i en liste eller en aritmetisk operation. 
+I kompleksitetsanalyse ser man på antallet af beregningsskridt som funktion af størrelsen af inddata og tillader derved at estimere en algoritmes faktiske tidsforbrug, når tiden for de enkelte instruktioner er kendt: Hvis køretiden for en algoritme er 1 sekund når størrelsen af inddata er 1000, hvad er den så når størrelsen af inddata fordobles? Vil den være det samme, det dobbelte eller f.eks. fire gange længere? Det kunne også lyde: Hvis en algoritme til en webapplikation virker fint med 1000 brugere, hvor godt virker den så for 2000? Dertil kan man give et bud på, hvordan køretiden for en algoritme kan nedsættes hvis metoden modificeres således at antallet af instruktioner reduceres. Den overordnede kompleksitet af en algoritme, som udledes af det mest dominerende beregningsled, kan på en simpel måde forbindes med den faktiske køretid og er et meget vigtigt værktøj i udvikling og programmering.
+
+[Til torsdag:]~\\
+  Læs: Guttag kap. 9 (Algorithmic complexity) og 10 (Simple algorithms).\\
+  Til forelæsningen gennemgåes: 
+ Køretidsanalyse
+ Asymptotisk notation
+ Klasser af kompleksiteter
+ Eksempler på algoritmer og deres beregningskompleksitet
+
+Bemærk: Der er ingen obligatorisk afleveringsopgave i denne uge og ingen forelæsning og øvelser tirsdag. Torsdag foregår alle øvelsestimerne hos Mossa.
+
+Torsdagsøvelser
+
+ De følgende funktioner indikerer køretiden, eller antallet af instruktioner, for problemstørrelse n, udført af en algoritme. Bestem det dominerende led for hver algoritme og klassificer den asymptotiske kompleksitet med store-O notation:
+ Den følgende funktion hasDuplicates tager en liste A som inddata og returnerer True hvis listen indeholder mindst eet duplikat, ellers False: 
+Lad n være længden af A. Foretag en kompleksitetsanalyse af hasDuplicates: 
+ Udled køretiden som funktion af n. Forklar de enkelte led.
+ Bestem den asymptotiske kompleksitet O(?).
+ Algoritme A har køretiden n^2 og algoritme B har køretiden \frac12n^2 + \frac12n, for problemstørrelse n. For hvilke problemstørrelser har A en bedre køretid end B, og for hvilke har B en bedre køretid end A?
+ Betragt følgende linier kode:
+Uden at kende noget videre til kodens funktion eller n, foretag da en kompleksitetsanalyse af koden:
+ Udled køretiden som funktion af n. Forklar de enkelte led.
+ Bestem den asymptotiske kompleksitet O(?).
+ Den følgende funktion isAnagram tager to strenge str1 og str2 og returnerer True hvis den ene streng er et anagram af den anden, ellers False: 
+Lad begge strenge have længden n. Foretag en kompleksitetsanalyse af isAnagram: 
+ Udled køretiden som funktion af n. Forklar de enkelte led.
+ Bestem den asymptotiske kompleksitet O(?).
+Hvad er best-case og worst-case beregningskompleksiteten? Kan man fastsætte en average-case beregningskompleksitet?
+ Den følgende funktion integerToString konverterer et positivt heltal intNum af længden n til en streng.
+Foretag en kompleksitetsanalyse af integerToString: 
+ Udled køretiden som funktion af n. Forklar de enkelte led.
+ Bestem den asymptotiske kompleksitet O(?).
+ Vi vil nu studere en algoritme maximumSum der finder den største sum af enhver mulig delsekvens af en liste af heltal. Dette problem er trivielt, hvis hele listen udelukkende indeholder positive heltal - nemlig listen selv. Hvis listen derimod indeholder en blanding af positive og negative tal, er løsningen ikke helt så oplagt. Som et eksempel vil delsekvensen med den største sum af talsekvensen [2,1,-4,10,15,-2,22,-8,5] være [10,15,-2,22], hvis sum er 45. maximumSum kan skrives som:
+Denne implementation har den asymptotiske beregningskompleksitet O(n^3). En af problemerne med implementationen er, at beregningerne af mange delsummer gentages unødigt. For eksempel beregner vi summen af index 3 til 5
+og senere summen af index 3 til 6 
+hvorved summen af index 3 til 5 beregnes to gange. Med denne observation, skriv en ny version af maximumSum der forbedrer beregningskompleksiteten til at være O(n^2).
+ Udfordring: Skriv en version af maximumSum ovenfor, der forbedrer beregningskompleksiteten til at være O(n).
+
+Plan for ugen
+
+Denne uge tager vi fat på et nyt emne: Objektorienteret programmering.  Indtil videre har vi brugt indbyggede typer, såsom heltal og tekststrenge, og vi har gjort god brug af de tilhørende funktioner og operatorer.  I denne uge skal vi lære at lave vores egne abstrakte datatyper.  
+Nøgleord for denne uge vil være: abstrakte datatyper, klasser, instanser, attributter,  metoder med særlig fokus på __init__| og __str__|, funktioner med og uden sideeffekt, objektorienteret programmering, samt hvorledes man ændre på betydningen af operatorer (Eng. operator overloading). 
+
+[Til tirsdag:]~\\
+  Læs Guttag kapitel 8.1 og 8.3. \\
+[Til torsdag:]~\\
+  Læs Guttag kapitel 8.1 og 8.3.\\
+
+Bemærk: Du har to uger til at løse den individuelle obligatoriske opgave og der er nye lokaler til øvelsesundervisningen (se Kursusoversigt i Absalon for detaljer).
+ Lineær algebra handler om koblede lineære ligninger, såsom
+  hvor a_ij er koefficienterne, der relaterer variablene x_j og y_i. Dette skrives ofte på kort form,
+  eller endnu kortere
+  hvor A er en matrix og \vecx og \vecy er (søjle) vektorer. Håndtering af lineære ligningssystemer er et 
+  centralt element i mange videnskabelige problemer, dels fordi de nemmere kan behandles end systemer af højereordens 
+  polynomier, og fordi mange fænomener kan modelleres som et eller flere lineære ligningssystemer. Reglerne, for hvordan man 
+  regner med lineære ligningssystemer på matrixform, kaldes Lineær Algebra som dækkes af kurset Lineær Algebra (blok 2), 
+  men man kan allerede nu læse mere derom bla.\ på \urlhttp://da.wikipedia.org/wiki/Matrix.  Der findes mange vektor-matrix-
+  biblioteker til Python, men denne opgave går ud på at programmere dele af et vektor-matrix-bibliotek fra bunden samt at 
+  udføre en egentlig afprøvning af biblioteket. Der må kun benyttes de indbyggede Python 2.7-kommandoer: 
+  
+  [a: Definer klassen simplematrix]~\\
+    Definer en klasse simplematrix.  Klassen skal kunne repræsentere en matrix (tabel) med m > 0 rækker og n> 0 søjler hvis elementer er reelle tal, samt den tomme 0\times 0 matrix med m=n=0.  Klassen skal som minimum have metoderne:
+     __init__|,\\
+      som initialiserer matricens værdier. Funktionen skal 
+      [i.] uden argumenter oprette en 0\times 0 matrix (den tomme matrix),
+      [ii.] med præcis 2 argumenter m,n oprette en matrix med m rækker og n søjler, hvis elementer er sat til 0, og endeligt
+      [iii.]  med 3 argumenter m,n,values oprette en m\times n matrix, hvis værdier kopieres fra sekvensen values, således at første element i values sættes på matrixplads (1,1), andet på matrixplads (1,2) osv. (dvs. række først orden).
+     __str__|,\\
+      som returnerer en tegnstreng, der opstiller matricens værdier på tabelform (række for række med linjeskift efter hver række).
+     read(filename),\\ som erstatter matricen med den, som indlæses fra filen filename.  Valg af filformat er en del af opgaven.
+     write(filename),\\ som udskriver matricens værdier til filen filename på en måde, som kan læses af read(filename).
+    samt operatorerne
+     __add__(self, other)|,\\ som elementvis adderer 2 matricer af samme størrelse.
+     __mul__(self, other)|,\\ som matrix-multiplicerer 2 matricer når antallet af søjler i den første er lig antallet af rækker i den næste.
+     __eq__(self, other)|,\\ som elementvis sammenligner 2 matricer af samme dimension og returnerer True, hvis og kun hvis alle elementer er ens, ellers returneres False. Denne metode overskriver sammenligningsoperatoren ==.
+     __ne__(self, other)|,\\ som elementvis sammenligner 2 matricer af samme dimension og returnerer False, hvis og kun hvis alle elementer er ens, ellers returneres True. Denne metode overskriver sammenligningsoperatoren !=.
+    Koden skal naturligvis indeholde passende docstrings såvel som andre kommentarer der dokumentere din løsning.
+
+
+  [b: Afprøv klassen simplematrix]~\\
+    For at sikre kvaliteten af et givent program er det nødvendigt at afprøve det.  Afprøvning er lidt af en kunst og især af et program, man selv har skrevet, da det kan være svært at opnå en passende mental distance til programmet.  Denne opgave går ud på at designe en grundig afprøvning, hvor alle relevante afprøvningsforsøg identificeres og programmeres.  Afprøvningen dokumenteres med et program, hvor et antal afprøvningsforsøg er programmeret efter følgende skabelon:
+
+Tirsdagsøvelser
+
+ Vi har allerede uden at vide det arbejdet med objekter i Python. Datatyper som  String, List og Dict er 
+alle eksempler på abtrakte datatyper og når vi opretter (også kaldet instantiering) variable af disse typer så har vi skabt 
+det vi kalder objekter. I Python kan vi definere abstrakte datatyper ved hjælp af klasser hvori vi definere datastrukturer og 
+funktioner på disse - vi kalder sådanne funktioner for metoder og de manipulere objekter som vi instantiere fra klassen. På lister 
+har vi allerede kaldt metoder på objekter - eksempelvis  L=[1, 2]; L.append(3)|. Prøv at oprette følgende klasse definition:
+Du kan instantiere objekter fra klassen B ved at skrive b = B()|. Prøv at benytte type funktionen på både 
+b og B og se hvilken type disse udtryk har.
+
+
+Som første eksempel på en abstrakt datatype, lad os definere en klasse Point som er en skabelon til 
+at kunne repræsentere et punkt i et 2-dimensionelt rum:
+Vi kan oprette et punkt, give den to attributter x, y og tilgå disse således:
+(Vi skal senere se smartere versioner af klassen Point som ikke tilføjer attributer til objektet efter instantiering som ovenfor.)
+
+Skriv en funktion distance\_between\_points som tager to punkter af typen Point som parametre og returnere den 
+(Euklidiske) afstand mellem punkterne.
+
+Lad os definere en klasse Rectangle som skal kunne repræsentere et rektangel i et 2-dimensionelt rum
+Repræsentation består af et punkt som repræsentere nederste venstre hjørne af rektanglet (som vi vil repræsentere 
+ved hjælp af Point klassen fra opgave Point)  samt attributter som 
+repræsentere bredde og højde af rektanglet. 
+Skriv en funktion move\_rectangle(rec, dx, dy) som tager en instans rec af klassen Point som parameter 
+samt parametrene og tallene dx, dy, og flytter rektanglet ved at lægge  dx hhv. dy til rec.corner 
+attributens x hhv. y attributter. Funktionen skal ændre rec (ikke returnere et nyt rektangel).
+
+Torsdagsøvelser
+
+Skriv en ny udgave af klassen Point fra opgave Point som indeholder en konstruktørmetode  
+__init__| som tager to parametre x, y og opretter tilsvarende attributer i instansen af klassen. Er det nødvendigt at 
+omskrive din implementation af funktionen distance\_between\_points for at kunne anvende denne nye forbedrede 
+udgave af klassen Point?
+Skriv en __str__| metode til klassen Point fra opgave Point2. Lav en instant af 
+klassen Point  og udskriv objektet vhj. print.
+
+Skriv en afprøvning af metoden. Afprøvningen skal designes 
+således, at alle skrevne programlinjer bliver afprøvet (også kaldet en intern afprøvning), samt at specifikationens 
+grænsetilfælde afprøves (også kaldet en ekstern afprøvning).  
+Når vi laver vores egne abstrakte datatyper i Python skal vi passe på når vi ønsker at kopiere objekter. Python 
+giver os mulighed for to typer af kopiering - overfladisk kopi (Eng. shallow copy) og dyb kopi (Eng. deep copy). 
+Forskellen mellem disse omtales i forelæsningerne.
+
+Skriv en ny udgave af funktionen move\_rectangle fra opgave rect som opretter og returnere en ny 
+instans af Rectangle istedet for at modificere parameterobjektet rec.
+
+Skriv en __add__| metode til klassen Point fra opgave Point2 som 
+lægger et punkt til det punkt vi kalder metoden på. Metoden skal returnere et nyt objekt af typen Point med resultatet af 
+summen.
+
+Skriv en afprøvning af metoden. Afprøvningen skal designes 
+således, at alle skrevne programlinjer bliver afprøvet (også kaldet en intern afprøvning), samt at specifikationens 
+grænsetilfælde afprøves (også kaldet en ekstern afprøvning).  
+
+
+ Skriv en ny udgave af klassen Rectangle fra opgave rect som indeholder en
+konstruktørmetode  __init__| som tager et passende antal parametre. Derudover skal klassen indeholde metoden 
+move\_rectangle som skal fungere som beskrevet i opgave rect2. Kan du genbruge din 
+implementation af funktionen fra opgave rect2?
+
+
+Skriv en __eq__| metode til klassen Point fra opgave Point2 som 
+implementerer ==| operatoren for objekter af typen Point, dvs. at den skal returnere True| hvis og kun hvis at 
+koordinaterne i de to punkter vi sammenligner er identiske.
+
+Udvid metoden __add__| fra opgave add således at den enten kan tage et 
+Point objekt eller en tuple som parameter.  Hvis parameteren er af typen Point, så skal metoden returnere et nyt Point objekt som indeholder summen 
+af det Point objekt vi kalder metoden på og parameter objektet.
+ Hvis parameteren er af typen tuple, så skal metoden returnere et nyt Point objekt som indeholder summen 
+af det Point objekt vi kalder metoden på og parameter objektet, således at første tuple værdi skal lægges til 
+Point.x og anden tuple værdi skal lægges til Point.y.
+Hvad sker der hvis en parameterværdi af typen tuple har antal elementer n\neq 2?
+
+ Skriv en afprøvning af metoden __add__| fra opgave add2. Afprøvningen skal designes 
+således, at alle skrevne programlinjer bliver afprøvet (også kaldet en intern afprøvning), samt at specifikationens 
+grænsetilfælde afprøves (også kaldet en ekstern afprøvning).  
+
+Kan du udvide __eq__| metode på klassen Point fra opgave eq til også at kunne håndtere parametre af typen tuple|?
+
+Metoden __add__| fra opgave add2 fungerer kun hvis vi har rækkefølgen 
+a+b| hvor a| er en 
+instans af type Point| og  b| er en instans af type Point| eller tuple|. Hvis vi derimod forsøger os med at 
+a| er af typen tuple|, så fejler metoden. Vi kan løse dette problem ved at tilføje metoden __radd__| således at 
+den enten kan tage et Point objekt eller en tuple som parameter. 
+ Hvis parameteren er af typen Point, så skal metoden returnere et nyt Point objekt som indeholder summen 
+af det Point objekt vi kalder metoden på og parameter objektet.
+ Hvis parameteren er af typen tuple, så skal metoden returnere et nyt Point objekt som indeholder summen 
+af det Point objekt vi kalder metoden på og parameter objektet, således at første tuple værdi skal lægges til 
+Point.x og anden tuple værdi skal lægges til Point.y.
+Kan du anvende din implementation af __add__| fra opgave 10to9 til at skrive __radd__| metoden?
+
+Plan for ugen
+
+Denne uge tager vi fat på emnet: Objektorienteret design. Objektorienteret programdesign går i sin enkelthed ud på at 
+identificere objekter, som er logiske grupperinger af datarepræsentation og funktionalitet, i det givne problem og benytte disse til 
+at opbygge et modulært opbygget program. Der er forskellige måder at lave objektorienteret programdesign som vil blive berørt 
+til forelæsningerne, herunder anvendelse af såkaldte objektorienteret designmønstre. Et designmønster kan tænkes på som en 
+opskrift på at løse ofte forekommende designproblemer. Derudover skal vi introducere konceptet arv og hvorledes dette 
+anvendes i Python. Arv anvendes til at udvide funktionaliteten og datarepræsentationen af en klasse og vi skal til 
+forelæsningerne se på forskellige eksempler.
+Nøgleord for denne uge vil være: Arv, objektorienteret design og designmønstre. 
+
+[Til tirsdag:]~\\
+    Læs Guttag kapitel 8.2, 8.4 og 11. \\
+    
+[Til torsdag:]~\\
+  Læs Guttag kapitel 8.2, 8.4 og 11. 
+  
+  Derudover kan man læse uddrag  
+ efter behov og du finder 
+  konkrete 
+  Python eksampler på design patterns på 
+  
+  Orienterer dig også i eksamenopgaveformuleringen fra PoP eksamen 2013-2014, som du finder under Undervisningsmateriale/Eksempel på eksamensopgave. \\
+
+Bemærk: Der er ingen ny obligatorisk afleveringsopgave i denne uge da forrige uges opgave fortsætter ind i denne uge og 
+afleveres fredag d. 28/11 2014.
+
+Tirsdagsøvelser
+
+Skriv en metode increment\_day til klassen som tager et heltal n som parameter og fungere således at 
+objektet vi kalder metoden på skal have sin dato fremskrevet med n dage. Husk på at der er forskellig antal dage i 
+månederne. Udfordring: Håmdtere din funktion skudår korrekt? (Se \urlhttp://wikipedia.org/wiki/Leap_year)
+
+ Skriv en afprøvning af metoden increment\_day fra opgave date. Afprøvningen skal designes 
+således, at alle skrevne programlinjer bliver afprøvet (også kaldet en intern afprøvning), samt at specifikationens 
+grænsetilfælde afprøves (også kaldet en ekstern afprøvning).  
+
+Skriv en klasse KompleksPoly som skal repræsentere et kompleks polynomium. Lav 
+konstruktørmetoden 
+__init__| således at man kan angive polynomiets koefficienter som parametre. Vælg en passende polynomium orden og 
+koefficienter i det tilfælde at der ikke 
+angives en parameter. Du kan vælge at repræsentere polynomiets koefficienter med Pythons indbyggede dataype 
+complex eller du kan anvende klassen Kompleks| vi udviklede under forelæsningen i sidste uge. Tilføj en 
+__str__| metode som returnere en pæn strengrepræsentation af polynomiet som du selv vil skrive det op på papir. Tilføj 
+en metode evaluate| som tager en parameter z og evaluerer polynomiet i den komplekseværdi angivet ved 
+z.
+
+ Skriv en afprøvning af klassen KompleksPoly fra opgave komplekspoly. Afprøvningen skal 
+designes således, at alle skrevne programlinjer bliver afprøvet (også kaldet en intern afprøvning), samt at 
+specifikationens grænsetilfælde afprøves (også kaldet en ekstern afprøvning).  
+
+ Lad os forestille os at vi skal skrive et program som kan repræsentere en skål med farvede glaskugler og som kan 
+sortere kuglerne over i nye skåle, således at hver skål repræsentere en unik farve. Prøv på papir at identificere mulige 
+objekter / klasser som du vil kunne anvende til at løse dette problem. For hvert objekt du identificere prøv at opskrive de 
+attributter og metoder du kan forestille dig at objektet skal have (du behøver ikke at implementere metoderne).
+
+Lad os vende tilbage til den obligatoriske opgave på ugeseddel 7 --- Integration ved Riemannsummer --- 
+hvor vi implementerede to forskellige metoder. Prøv at designe en klasse til at repræsentere reelle funktioner af én variabel og 
+tilføj passende metoder til klassen. Tilpas derpå din løsning til funktionerne rInt og rIntMid fra ugeseddel 7, 
+således at de bliver til metoder på din nye funktionsklasse og anvender metoder og attributter på klassen.
+
+Torsdagsøvelser
+
+Lad os vende tilbage til funktionsklassen fra opgave numint1 (hvis du ikke allerede 
+har løst opgave numint1 så gør det nu inden du løser denne opgave) og lad os sige at vi ønsker at udvide 
+funktionaliteten af klassen med en implementation af Monte Carlo integrationsmetoden fra opgave 7to4. Vi kunne gøre dette 
+ved at tilføje en ny metode til vores funktionsklasse, eller vi kan benytte os af nedarvning af funktionalitet og lave en ny klasse 
+som arver fra vores funktionsklasse og derudover inkludere en metode mcInt|. Prøv at implementere denne nye klasse. 
+(Dette er i virkeligheden ikke en særlig god programdesignstrategi så vi vender tilbage til dette problem i opgave 
+
+Forestil dig, at du skal lave et objektorienteret programdesign som skal kunne repræsentere datasæt af 
+forskellig karakter, således at antallet af målepunkter og antallet af målte værdier pr. målepunkt kan variere. Forestil dig 
+ligeledes at du kan hente data ind på 
+forskelligvis --- eksempelvis ved 1) indtastning på tastaturet, 2) indlæsning fra fil, 3) hent fil fra internettet, 4) hent fra en 
+database. Som eksamenpler på datasæt kan du kigge på flueaeg.txt og pattedyr.txt du finder i Undervisningsmateriale/
+Datamateriale. Prøv at udarbejd et objektorienteret programdesign som repræsentere abstraktionen datasæt som beskrevet 
+ovenfor. Hint: Du kan med fordel benytte nedarvning af funktionalitet.
+
+ Implementér dit programdesign fra opgave dataset, således at du eksempelvis kan indlæse de to 
+datasæt flueaeg.txt og pattedyr.txt eller kan indtaste et datasæt fra tastaturet (hint: Her kunne du lade hver linje repræsentere et 
+nyt målepunkt og lade de målte værdier være separeret af mellemrum).
+
+De to designstrategier vi anvendte til at udvikle funktionsklassen i opgave er fine nok for små programmer og i situationer, hvor man ikke forventer mange flere 
+udvidelse med nye metoder. Er man derimod i en situation hvor man kan forestille sig mange nye metoder, er disse to 
+designstrategier ikke særlige hensigtsmæssige (vi kan eksempelvis ende ud med meget lange nedarvningshierarkier som kan 
+være svære at overskue). En alternativ designstrategi er at anvende det såkaldte strategimønster (Eng. Strategy pattern)
+som omtaltes ved forelæsningerne (og se evt. også \urlhttp://sourcemaking.com/design_patterns/strategy). I denne 
+sammenhæng er en strategi en konkret integrationsmetode. Lad os først definere en grænseflade (Eng. interface) som vores 
+strategier skal implementere:
+Bemærk at jeg medvilje har valgt at lave metoden integrate tom ved at anvende pass --- jeg ved endnu ikke 
+hvilken integrationsmetode det drejer sig om. Du kan nu implementere integrationsmetoderne ved, for hver metode, at lave en 
+integrationsstrategiklasse som 
+arver fra IntegrationStrategyInterface og inkluderer selve implementationen af metoden i integrate, eksempelvis 
+således:
+
+
+Omskriv din funktionsklasse således at du fjerner alle integrationsmetoderne og i stedet kan angive en konkret 
+integrationsmetode ved at instantiere den tilhørende integrationsstrategi klasse. Måske har du behov for en metode på 
+funktionsklassen, som sætter den aktuelle integrationsmetode. Du skal implementere et par integrationsmetoder som 
+strategier. Hint: Hvis du har mistet overblikket, så prøv at begynde med at tegne et klassediagram som illustrere alle klasser i 
+problemet og deres relationer (eks. arv og has-an-instance-of) --- du kan anvende fattigmands UML notationen der blev 
+introduceret til forelæsningen.
+
+
+ Til forelæsningerne gennemgik jeg en implementation af en simulator af solsystemet som anvendte Model-View-Controller 
+designet. Download løsningen fra Absalon --- du finder den under Undervisningsmateriale/Eksempel på eksamensopgave/. Kig 
+de forskellige moduler igennem og dan dig et overblik over hvorledes løsningen er bygget op. Du kan med fordel kigge på 
+klassediagrammet imens du læser koden igennem.
+
+ Tag udgangspunkt i din implementation af et datasæt fra opgave dataset og lad os tænke på dette 
+som vores model. Prøv at følge Model-View programdesignstrategien og omskriv din datasæt repræsentation så den kan 
+fungere som en model. Tilføj nu konceptet View til dit programdesign således at du kan lave forskellige visualiseringer af 
+datasættet. Prøv at implementere nogle konkrete Views som eksempelvis et View der sætter datasættet pænt op og udskriver 
+det i terminalen, og et View som laver en graf af datasættet (hint: Hvis du anvender flueaeg.txt og pattedyr.txt, som begge 
+indeholder to målte værdier pr. målepunkt, så kan du blot vise disse som punkter i et 2-dimensionelt koordinatsystem).
+
+ For de avancerede: Du kan få din klasse KompleksPoly fra opgave komplekspoly til at fungere som en 
+funktion ved at tilføje den specielle metode __call__(self, z)| og lade denne metode kalde metoden evaluate(self, z)|. 
+Du kan nu skrive kode som:
+Prøv at implementere dette på KompleksPoly klassen.
+
+Plan for ugen
+
+I denne uge tager vi fat på et nyt emne: Modellering med differentialligninger. Mange naturvidenskabelige problemer kan
+modelleres ved hjælp af differentialligninger og vi skal se på nogle eksempler. Visse differentialligninger kan løses analytisk, 
+dvs. vi kan opskrive en formel for løsningen. Men for flertallet af differentialligninger kan vi ikke finde en analytisk løsning, 
+hvorfor vi må ty til numeriske metoder. For differentialligninger anvender man differensmetoder til at finde numeriske løsninger.
+
+Vi vil også gennemgå Python biblioteket numpy som giver os en ny effektiv datastruktur kaldet ndarray som 
+tillader os at 
+repræsentere multi-dimensionelle tabeller. Dertil giver numpy os en række effektive metoder til 
+at lave numeriske 
+beregninger på data repræsenteret i tabelform, som eksempelvis matricer og billeder. Biblioteket numpy understøtter 
+også ndarray og kan derfor anvendes sammen med numpy.
+
+Nøgleord for denne uge vil være: Modellering med differentialligninger, numpy's ndarray (herunder creation, indexing, slicing, I/O, broadcasting, og Matplotlib og numpy). 
+
+[Til tirsdag:]~\\
+  Læs noter om modellering med differentialligninger.\\[1mm]
+  Læs NumPy User Guide Kapitler 2.1-2.7 (\urlhttp://docs.scipy.org/doc/numpy/user/).\\[1mm]
+  Til forelæsningen behandles numpy's ndarray: creation, indexing, slicing, broadcasting, I/O.
+[Til torsdag:]~\\
+  Orienter jer i NumPy Reference Guide (\urlhttp://docs.scipy.org/doc/numpy/reference/), og læs afsnit om numpy.linalg og numpy.random.  Læs desuden Matplotlib User's Guide (\urlhttp://matplotlib.sourceforge.net/users/index.html).\\[1mm]
+  Til forelæsningen behandles matrixberegninger med numpy samt generering af grafer især med fokus på matplotlib.pyplot.
+
+Bølgeligningen: Vi befinder os på et stadion. Stemningen er god, og en fan beslutter sig for at starte en bølge og resten af stadion følger 
+trop. Men hvordan kan vi undersøge og beskrive dette fænomen matematisk?
+
+Differentialligninger på formen
+hvor c > 0  er en strengt positiv konstant, beskriver udviklingen af bølger. Hvor \ell angiver længden af 
+bølgen.
+
+Vi vil nu undersøge, hvordan bølgen, som vores ærkefan har startet, udvikler sig. I vores pragmatiske tilgang, klipper vi 
+tilskuermængden i stadion op og lægger tilskuerne ned på et linjestykke med længden \ell (se figur wave). Desuden 
+undersøger vi kun 
+bølgens udvikling rundt om stadion og er kun interesseret i at modellere hvor bølgen rejser sig på stadion når tiden går. 
+Vi placerer vores ærkefan i starten af linjestykket (se vores initialbetingelse nedenfor). Dermed beskriver løsningen u(x,t) 
+til den endimensionelle differentialligning \eqrefboelge, tilskuerbølgen til tiden t. Da vi ønsker at bevare den runde struktur af 
+vores stadium, antager vi periodiske randbetingelser, 
+dvs. u(0,t) = u(\ell,t), som vi sætter lig 0 for enkelhedens skyld, dvs. u(0,t) = u(\ell,t)=0. Det betyder at når bølgen når til 
+enden af linjestykket så er den kommet hele vejen rundt om stadion. Her begynder vores model at bryde sammen idet 
+modelbølgen vil vende ved endepunktet af linjestykket og begynde at bevæge sig baglæns tilbage til vores ærkefan. Men pyt 
+med det.
+
+Til diskretisering af differentialligningen, bruger vi centrale approksimationer for den 2. afledte, dvs.
+hvor h angiver skridtstørrelsen mellem x_i-1 og x_i, dvs. h=x_i - x_i-1 og tilsvarende angiver k skridtstørrelsen mellem t_j-1 og t_j, dvs. k = t_j - t_j-1.
+
+Vores initialbetingelse er 
+
+Bemærk, dette er nødvendigt da vi skal bruge to tidsskridt, t_j-1 og t_j, for at kunne beregne funktionen u til 
+tiden t_j+1, så vi har brug for at kende en initial funktionsværdi for u til tiden t=0 og t=k.
+
+Indsæt approksimationerne \eqrefapproxx og \eqrefapproxt i differentialligningen \eqrefboelge og
+opskriv derved differensligningen med ovenstående approximationer \eqrefapproxx, \eqrefapproxt, gruppér samtlige led 
+og isolér u(x_i,t_j+1). Hermed får vi en formel til beregning af funktionen u som funktion af x til næste tidspunkt 
+t_j+1.
+
+Implementér et program, der beregner en approksimativ løsning u(x,t) til differentialligningen \eqrefboelge ved 
+at anvende differensligningen fra (a), samt kan producere nogle grafer af 
+løsningen u(x,t) til udvalgte tidspunkter t (dvs. fasthold tidspunktet t og tegn u(x,t) som funktion af x). 
+
+Brug c=1 hvor lang tid er bølgen om at komme hele vejen rundt om stadion, dvs. til hvilket tidspunkt 
+når bølgen frem til enden af vores linjestykke? Undersøg dette ved 
+hjælp af dit program og besvar spørgsmålet i rapporten som også skal indeholde nogle grafer der illustrere bøglens udvikling 
+ved bestemte tidspunkter herunder for t=0 og t=k samt når bølgen er halvvejs og når bølgen når enden af linjestykket. 
+Hvad sker der når der ændres på skridtstørrelserne h og k?
+
+
+Tirsdagsøvelser
+
+Løsning af differentialligninger er en fundamental opgave for mange videnskabsgrene.  I skal skrive et program, som simulerer et kast med en bold. I det følgende vil vi benytte, et 3 dimensionalt koordinatsystem [x,y,z]^T, hvor y-aksen er den lodrette.
+    
+    Newtons 2. lov definerer kraft som: 
+    hvor \vec F er den kraft et punktlegeme påvirkes med til tiden t, M er legemets masse, og  \vec P(t) er legemets position, således at \vec A(t)=d^2\vec P(t)/dt^2 er legemets acceleration og \vec V(t)=d\vec P(t)/dt dets hastighed.  Tæt på jordens overflade bliver alle legemer påvirket af en konstant tyngdeacceleration på ca. -9.82\, \textm/\texts^2, hvorfor et punktlegeme på 1\, \textkg vil blive påvirket af en konstant kraft på \vec F_\texttyngde=[0,-9.82,0]^T\, \textm\,\textkg/\texts^2. Hvis vi betragter et legeme, der vejer 1\, \textkg, og som sendes af sted fra punktet P(0)=[0,0,0]^T\,\textm med en initial hastighedsvektor på \vec V(0)=[100,100,0]^T\,\textm/\texts, så vil vi kunne udregne dets bane ved integration:
+   Man kan indse, at 3.\ koordinaten altid vil være 0, og derfor vil vi ignorere den i det følgende, således at \vec V(t) = [0,-9.82]^Tt\, \textm/\texts^2+[100,100]^T\,\textm/\texts. Integration endnu en gang og indsættelse af begyndelsespunktet giver,
+   
+I denne opgave skal du skrive et program, der producerer den eksakte graf vha.\ \eqrefexact.
+
+Torsdagsøvelser
+ I denne og de efterfølgende opgaver antager vi at du allerede har importeret numpy biblioteket med 
+import numpy as np|. Opret et numpy.ndarray med A = np.arange(10)|. Omform A til en 2 \times 5 
+matrix uden at kopiere over i en ny variabel. Omform derpå A til en 5 \times 2 matrix.
+
+ Opret et numpy.ndarray A med 4 elementer med element datatypen int. Tildel alle elementerne 
+værdien 3.5 og se derpå hvad der er gemt i elementerne i A. 
+
+ Opret et numpy.ndarray med A = np.arange(10)|. Benyt indeksering til at udtrække hvert andet element fra 
+A og gem i en variabel kaldet B. Prøv at tildele  elementerne i B værdien -1. Hvad sker der med 
+elementerne i A og kan du forklare det?
+
+ Hvad er forskellen på resultaterne af følgende beregninger
+Kan du forklare forklare hvorfor der er forskel på C og D?
+
+ Vi kan i numpy oprette identitetsmatricen ved hjælp af funktionen numpy.eye.
+Skriv en funktion som anvender numpy.ndarray til lave en matrix med værdien 1 på anti-diagonal elementerne. Et 3 
+\times 3 eksempel på sådan en anti-diagonal matrix se såldes ud
+
+Kan du skrive funktionen uden brug af løkker og ved at anvende numpy.ndarray indekseringsmekanisme?
+
+ Betragt det lineære ligningssystem,
+    Er ligningssystemet tæt på at være singulært? Benyt numpy.inv til at løse for variablene x_i - start med at læse op på hvordan man bruger funktionen numpy.inv.
+
+ Hvis A\in \mathbbR^n\times m så kaldes følgende udtryk for den pseudoinverse til A
+Benyt numpy.mat datatypen og opret en tilfældig matrix A ved hjælp af numpy.random.random. Beregn den pseudoinverse til A ved at anvende ovenstående udtryk.
+
+
+Definer en tilfældig og symmetrisk ndarray, x, med numpy.random.random, og 
+udregn dens egenværdier og -vektorer, e og v, med numpy.linalg.eig. Verificer, at v er en orthogonal matrix, og at 
+v*\textdiag(e)*v^T er tæt på x ved brug af numpy.dot-metoden.
+
+ Udregn 5'te potens af x fra opgave randommatrix med **-operatoren, og sammenlign 
+med v*\textdiag(e)^5*v^T.  Giver det samme resultat?
+
+    
+ Desværre har langt de fleste differentialligninger ikke en "`closed-form"' løsning som den beskrevet i opgave boldkast1.  Istedet kan f.eks.\ benyttes differensmetoder.  Til løsning af samme ligningssystem med differensmetoder kan man anvende følgende approksimation,  således at hvis man begynder i et kendt punkt f.eks. V(0) og P(0), så kan man udregne en approksimation til kurven P(t) ved at iterere ovenstående ligninger.  Denne form er nyttig, hvis man f.eks.\ tager vindmodstand i betragtning.  Vindmodstand kan modelleres som en kraft, der er parallel med -\vec V(t), og hvis længde er proportional med ||\vec V(t)||^2, \vec F_\textluft(t)=-C||\vec V(t)||\vec V(t), hvor konstanten f.eks. kunne være C=1/3600 med passende enheder.  For en model af et kast med vindmodstand vil den resulterende kraft være \vec F(t)=\vec F_\texttyngde+\vec F_\textluft(t), og \vec A(t)=\vec F(t)/M.
+
+  I denne opgave skal du skrive et program, der producerer den eksakte graf vha.\ \eqrefexact (genbrug din løsning til opgave , samt grafer, der sammenligner approksimationer vha.\ \eqrefapprox for de 3 forskellige værdier af \Delta t= 4, 1, 1/4 og med og uden vindmodstand, hvor C=1/3600. Du kan med fordel benytte numpy.ndarray.
+    
+ Denne opgave går ud på at simulere trafik: Antag, at der er N objekter
+  (biler, cykler, eller gående) som bevæger sig på en cirkelbane med
+  radius 1.  Parametriser positionen for objekt i ved dets
+  vinkel, \theta_i, således at dets position i 2D er
+   og således at dets vinkel-hastighed og -acceleration er givet ved 0\leq
+  v_i\leq V og |a_i|<A, hvor V og A er maksimumgrænserne for
+  hastighed og acceleration.  
+  \beginenumerate
+   Skriv et program, som simulerer trafikken ved brug af følgende
+    opdateringsregel:
+     tilrettet således at 1) objekterne tilstræber afstanden
+    \frac2piN til objektet foran; 2) objekterne bremser helt
+    op, hvis de i næste tidsskridt ville kollidere med objektet foran.
+   Afprøv programmet for \Delta t=.1, N=10 og N=100 og
+    fornuftige valg af V, A, og g, og argumenter kort for dine
+    valg (max.\ 5 linjer).
+   Når trafikken er tæt opstår der typisk stående bølger som
+    bevæger sig modsat retning af trafikken.  Kan du fremprovokere
+    dette fænomen i dit program ved passende valg af N, V, A, og
+    g? 
+
+Plan for ugen
+
+Denne uge tager vi fat på et nyt emne: Statistisk modellering og regression. I sidste uge tog vi fat på modellering med differentialligninger. I matematisk modellering formulerer vi vores ide om et fænomen i den virkelige verden ved hjælp af matematiske udtryk. Differentialligningerne kan i denne sammenhæng anvendes til at formulere vækstmodeller og andre modeller, hvor tilstanden (f.eks. bestanden) på et bestemt tidspunkt estimeres udfra bestanden på, samt vækstraten i, estimatet af et tidligere tidspunkt. I denne uge tager vi udgangspunkt i eksperimentiel data, d.v.s. data indhentet fra den virkelige verden, som typisk er behæftet med støj og andre unøjagtigheder, og ser på, hvordan vi kan foretage matematisk modellering og statistisk analyse af sådan data. Regression er en form for matematisk modellering, hvor vi forsøger at tilpasse et matematisk udtryk til vores data. Hvis dette udtryk er en lineær ligning betegnes metoden lineær regression. Med statistisk analyse kan vi beskrive bestemte egenskaber ved data relateret til dens middelværdi og spredning, og derved forudse værdien af nye målinger samt evaluere hvor meget et datapunkt afviger fra resten af data. Med andre ord anvender vi statistiske egenskaber ved data til at modellere fænomenet. \\
+
+[Til tirsdag:]~\\
+Læs Guttag kap. 15 (Understanding experimental data)\\
+Til forelæsningen gennemgåes:
+ Matematisk modellering
+ Eksperimentiel data
+ Regressionsanalyse
+[Til torsdag:]~\\
+Læs: Guttag kap. 12 (Stochastic programs, probability, and statistics), Massemord.pdf (noter)\\
+Til forelæsningen gennemgåes:
+
+ Statistisk analyse og modellering
+ Fordelinger, standard afvigelse, middelværdi
+
+ Denne opgave drejer sig om at tilnærme noget data med et matematisk udtryk, for på den måde at beskrive hvordan data ``opfører" sig. 
+
+Lineær regressionsanalyse
+
+Antag, at der foreligger en række observationer
+(x_1,y_1), (x_2,y_2), \ldots, (x_n,y_n) af sammenhørende værdier
+af en såkaldt uafhængig variabel x og den
+afhængige variable y.  Variablen y
+formodes at være en lineær funktion af x,
+men på grund af støj i observationerne, begrundet som naturens tilfældigheder, ligger de observerede
+punkter ikke helt på en ret linje.
+Antages denne støj at følge en
+statistisk normalfordeling,
+kan man med lineær regressionsanalyse bestemme den
+lineære sammenhæng, der ``bedst'' stemmer overens med
+observationerne.  I denne forbindelse kan ``bedst'' forstås
+som den lineære hypotese, der gør de faktiske observationer
+mest sandsynlige.  Statistikere kalder metoden for
+``maximum likelihood''-princippet. 
+
+Biblioteksmodulet scipy indeholder funktioner til
+lineær regressionsanalyse, men den her stillede
+opgave går ud på at programmere en sådan funktion selv,
+uden brug af scipy eller andre tilsvarende biblioteker.
+
+Formlerne er ganske simple.  Foretag disse beregninger:
+Så kan den linje, som stemmer bedst overens med observationerne,
+beskrives med ligningen
+
+Udklækningstid for flueæg
+
+I et forsøg undersøges en mulig sammenhæng mellem luftfugtigheden L (målt i \%) og udklækningstiden T (målt i timer) for en bestemt type flueæg. Data findes i tabellen nedenfor:
+
+Denne data er lagret i filen ``flueaeg.txt'', som kan findes på kursushjemmesiden i underkataloget ``Datamateriale'' under
+``Undervisningsmateriale'. I skal nu udvikle funktionaliteten til at foretage lineær regressionsanalyse på dataen og samtidig opfylde visse designkrav til koden:
+
+ Skriv en klasse Dataset der administrerer en variabel med observationsdata, dataPoints. Den interne repræsentation af dataPoints er valgfri (f.eks. hashtabel, liste). Klassen skal indeholde metoder til at sætte og udlæse dataPoints, samt metoder til at opslå enkelte datapunkter (hint: gør det før valg af datastruktur / opslagsmetode klart, hvordan dataen skal bruges i regressionsanalysen). Klassen Dataset skal ydermere indeholde en metode readDataPoints(filePath), som tager et absoult stinavn filePath til en fil som ``flueaeg.txt'', der indeholder komma-separerede data-punktsæt x_i, y_i, indlæser disse punktsæt og lagrer dem i dataPoints. Der skal håndteres fejl i metoderne - f.eks. skal readDataPoints(filePath) kunne detektere og give den rette respons på et forkert dataformat.
+
+ Skriv en klasse Regression der administrerer en variabel data af typen Dataset og som tilgår dataen i data v.h.a. Dataset klassens metoder. Klassen Regression skal indeholde en metode linearAnalysis(), der foretager en lineær regresionsanalyse på punktsættene i data. linearAnalysis() skal beregne og returnere listeparret ([x_min, x_max], [f(x_min), f(x_max)]), idet x_min og x_max betegner henholdsvis den mindste og den største af værdierne x_1,\ldots,x_n i data, og f er beregnet i henhold til (regran) og (regrlinje). Skriv formlerne i (regran) som hjælpemetoder til linearAnalysis() i klassen Regression. De skal skrives på en sådan form, at kode genbruges til flere formler. Der skal håndteres fejl i metoderne - f.eks. skal linearAnalysis() kunne håndtere hvis data ikke er blevet initialiseret, eller ikke indeholder nok punkter til en regressionsanalyse. 
+
+ Skriv funktionalitet til at plotte en linie i det format der returneres af linearAnalysis(), ovenpå punksæt som lagret i klassen Dataset. Hvordan denne funktionalitet interagerer med klasserne Dataset og Regression, og i hvilken form den implementeres, er valgfrit. Forklar jeres designvalg (hint: overvej generalitet og genbrug af funktionalitet).
+
+ Overfør filen ``flueaeg.txt'' til jeres egen computer. Anvend koden fra (a - c) til at indlæse punkterne fra ``flueaeg.txt'' samt beregne og plotte regressionslinien for disse punkter. Vis plottet i afleveringen og kommenter: Hvad viser regressionslinien?
+ Foretag en grundig afprøvning af koden og dokumenter afprøvningen.
+
+
+Tirsdagsøvelser
+
+ Når man analyserer data er det ofte praktisk at lave et histogram. Et histogram er et plot af antallet af data-punkter som falder indenfor et bestemt interval. Hvis der f.eks. analyseres et datasæt som består af vægten af insekter fundet på en mark, vil man måske gerne vide hvor mange insekter som har en vægt mellem 0.1 gram og 0.2 gram, mellem 0.2 gram og 0.3 gram og så videre. Skriv en funktion valueIntervCount som tager en liste data af insektvægte og en liste interv af værdi-intervaller, og returnerer en liste som indeholder antallet af insektvægte i hvert interval. Hvis vi f.eks. har
+så skal valueIntervCount(data, interv) returnere listen [3, 2, 4, 1]. Et histogram kan også afbildes direkte fra data, i Python. Plot histogrammet ved at kalde 
+Stemmer plottet overens med resultatet af valueIntervCount?
+ Vi skal se på en matematisk model for væksten af to bestande som har en direkte indvirkning på hinanden. På en eng findes en stor bestand af kaniner; kaninerne spiser græsset og reproducerer hurtigt. Den samme eng forsørger også en bestand af ulve, som lever af kaninerne. Som kaninbestanden vokser, vokser ulvebestanden ligeledes indtil der er så mange ulve at de overspiser kaninerne og ulvebestanden igen reduceres. Idet ulvebestanden er reduceret, kan kaninbestanden igen vokse, og igen ligeledes med ulvebestanden. Dette fænomen er blevet studeret af økologer som konkluderer, at bestandene er cykliske; der er aldrig en stabilisering i bestandenes størrelse. Man formulerede to differentialligninger som varetager størrelsen af de to interagerende bestande:
+hvor R er antal kaniner ved starttidspunktet, R_g kaninernes vækstrate og R_d kaninernes dødsrate, og W er antal ulve ved starttidspunktet, W_g ulvenes vækstrate og W_d ulvenes dødsrate. Det vil sige at \fracdRdt beskriver ændringen i kaninbestanden og \fracdWdt ændringen i ulvebestanden på tiden t. Skriv nu en funktion population(R, W, Rg, Wg, Rd, Wd, maxt) der som inddata tager startbestandene R og W, vækstraterne Rg og Wg, dødsraterne Rd og Wd samt en maksimaltid maxt, og som returnerer to lister der beskriver populationen af h.h.v. kaniner og ulve for hver tid 1, 2, \dots, maxt. Populationerne i hvert tidsskridt beregnes v.h.a. den afledte fra forrige tidsskridt d.v.s. f(t + \Delta t) = f(t) + \fracdfdt(t)\Delta t. Plot graferne for resultatet af population(40, 15, 0.1, 0.005, 0.01, 0.1) og diskuter resultatet.
+
+Torsdagsøvelser
+
+ En kemiker vil analysere fejlraten af en mekanisme, som skulle returnere præcis 4 gram af et bestemt stof. I
+nedenstående tabel har hun indsamlet en mængde målinger af den faktiske vægt:\\
+
+I denne opgave skal I implementere funktionalitet til at foretage en statistisk analyse af 1-dimensionel data, som i tabellen ovenfor.
+ Middelværdien af data giver et estimat af dataens forventede værdi. Middelværdien af n datapunkter x_i er givet ved \barx = \frac1n \sum_i=1^n x_i. Skriv en funktion meanVal der beregner middelværdien og brug den til at beregne middelværdien af målingerne i tabellen ovenfor.
+ Spredningen af data giver et estimat af forskellen på målingerne, også beskrevet som usikkerheden af målingerne. Det mest anvendte spredningsmål er standard afvigelsen fra middelværdien, givet ved
+Skriv en funktion stdDev der beregner standard afvigelsen og brug den til at beregne standard afvigelsen af målingerne i tabellen ovenfor.
+ Med middelværdien og standard afvigelsen kan vi beskrive dataens normalfordeling. Dette er en funktion som fortæller hvad sandsynligheden er for, at en (ny) måling har en bestemt værdi. Ligningen for funktionen for normalfordelingen kan udtrykkes som
+Skriv dette udtryk som en funktion normalDist (hint: brug meanVal og stdDev). Anvend normalDist til at plotte normalfordelingen af målingerne i tabellen ovenfor. Hvad er sandsynligheden for at en måling antager værdien 4?
+\endenumerate
+ Middelværdien af data er den mest anvendte estimator af dataens central tendency, men det er ikke en såkaldt robust estimator, idet blot een meget fejlbehæftet værdi vil påvirke middelværdien meget. Istedet anvendes sommetider medianen \tildex, der er givet ved den midterste værdi i rækken af n måliner, sorteret efter størrelse. Hvis n er et lige antal, så beregnes medianen som gennemsnittet af de to midterste værdier. Observer målingerne i tabellen nedenfor:\\
+
+ Brug funktionen meanVal fra første opgave til at beregne middelværdien af målingerne i tabellen ovenfor.
+ Skriv en funktion medianVal der beregner medianen og brug den til at beregne medianen af målingerne i tabellen ovenfor.  
+I en standard normalfordeling er middelværdien af data 0 og standard afvigelsen 1. Funktionen normal fra modulet numpy.random returnerer en tilfældig værdi fra denne distribution. Anvend normal til at generere 1000 tilfældige værdier.
+\beginenumerate[(a)]
+ Med samme strategi som i første tirsdagsøvelse, inddel de 1000 samplede værdier i diskrete værdiintervaller (f.eks. af størrelsen 0.1) og plot histogrammet. 
+ Anvend funktionen normalDist fra torsdagsøvelse 1(c) til at plotte normalfordelingen af de 1000 samplede værdier. Hvordan passer det med histogrammet? 
+
+Plan for ugen
+
+Denne uge tager vi fat på et nyt emne: Modellering med partikelsystemer. En partikelsimulator, også betegnet en N-legeme simulator er et system der simulerer en større mængde partiklers adfærd, under indflydelse af forskellige fysiske kræfter. Partikelsimulatorer bliver typisk anvendt til at studere komplekse systemer i fysik og astronomi, fra planetsystemer, stjerneklynger og dannelsen af galakser til kemiske processer såsom vandmolekuler, gasmolekuler og ild. Fælles for disse systemer er at partiklerne indgår som selvstændige objekter der reagerer på udefrakommende kræfter, som f.eks. kan være tyngdekraften, vind, temperatur, kollisioner med og tiltrækning/frastødning af andre partikler. Til de store, beregningstunge systemer kræves en effektiv implementation og typisk parallelberegninger på en klynge af processorer. I skal nu stifte bekendtskab med en simpel partikelsimulator, hvor I får mulighed for selv at vælge et passende design.
+
+[Til tirsdag:]~\\
+  Læs: Ikke noget. Men tænk rigtig meget på kode :) \\
+  Til forelæsningen gennemgåes:
+ N-legeme problemet
+ Objektorienteret designtilgang
+ Lidt repetition af vektoraritmetik
+[Til torsdag:]~\\
+  Læs: Som tirsdag.\\
+  Til forelæsningen fortsættes fra tirsdag.
+ Denne opgave handler om at simulere gasmolekuler i en todimensionel idealgas. 
+
+I ugens opgave skal vi blandt andet arbejde med vektoraritmetik. En vektor betegner vi her med fed skrift, og er 
+givet ved tuplen v = (v_x, v_y). Vi vil anvende den samme notation for punkter. Nedenfor er beskrevet en række 
+aritmetiske operationer, I får brug for at 
+implementere i opgaven. (Hint: Man kunne for eksempel anvende numpy.mat|).
+
+Vi vil betragte molekulerne som 
+punktformede partikler med en masse og vi anvender en simplificeret model for en idealgas \urlhttp://en.wikipedia.org/wiki/Kinetic_theory. Gaspartiklerne er indeholdt i en rund 
+beholder, hvor de uafhængigt af hinanden 
+bevæger sig med en konstant hastighed og kun ændrer retning ved kollision med beholderens væg: 
+
+Systemet 
+betragtes i tidsintervallet [0, t_max], hvor 0 \leq t_i \leq t_max betegner de enkelte tidsskridt, således at størrelsen 
+af et tidsskridt er \Delta t. Simulatoren vil indeholde to typer af objekter:
+Partikel: Dette objekt er beskrevet ved en positionsvektor p = (p_x, p_y), en hastighedsvektor 
+v = (v_x, v_y), hvor længden af v bestemmer farten som partiklen bevæger sig med og retningen af 
+bevægelsen er givet ved vektoren. Derudover har partiklen en masse, som vi dog i det efterfølgende vil antage er m=10^-23 g (gram). En partikel initialiseres med en bestemt position og hastighed inde i beholderen. Efter initialiseringen 
+opdateres p ved hvert tidsskridt \Delta t som
+
+Beholder: Dette objekt er beskrevet ved en radius r, en centrumsposition c = (c_x, c_y) samt en liste af 
+partikelobjekter. En beholder initialiseres med en radius og eventuelt en centrumsposition, som alternativt kan sættes til 
+(0,0). Den skal selv oprette listen med partikelobjekterne, enten i initialiseringen eller v.h.a. en funktion, begge med en 
+parameter som angiver antallet af partikler. Beholderen skal sørge for at initialisere hver partikel med en tilfældig position, 
+men dog sikre at positionen er indenfor beholderens væg. 
+Derudover skal hastighedsvektorene også initialiseres med tilfældige værdier og her foreslår vi at man sampler en retning ved 
+at trække en uniformt fordelt vinkel fra intervallet \theta \in [0; 2pi] og at man sampler farten (dvs. længden af 
+hastighedsvektoren) uniformt fra et interval v\in [0; v_\rm max]. Vi kan konvertere disse to tilfældige værdier til en 
+hastighedsvektor ved at anvende følgende formel
+vi har brug for en øvre grænse på farten v_\rm max som bør sættes således at partiklen skal bruge mange tidsskridt for at 
+bevæger sig fra den ene side af beholderen til den anden.
+
+Der skal i hvert tidsskridt undersøges for kollisioner af partikler med beholderens væg. En simpel måde at gøre dette 
+er, i forbindelse med opdateringen af en partikels nye position via (step), at tjekke om denne position vil føre partiklen 
+udover 
+beholderens rand, dvs. om afstanden til beholderens centrum er større end dens radius. Dette kan gøres med følgende 
+boolske operation
+hvor p og v er partiklens nuværende position og hastighed, c beholderens centrum og r beholderens radius.
+
+Kollisionen af en partikel med beholderens væg er illustreret i Fig.~coll
+Hvis der vil ske en kollision, altså \rm willcollide(p, v, c, r) returnerer sandt, kan det håndteres i følgende trin:
+
+ Sæt p1 = p
+ Kollisionspunktet med beholderens væg pc kan findes ved at løse ligningen
+for skalaren 0 < u \leq 1, som er en andengrads ligning i u (husk at behandle p1, v og c som vektorer). Find rødderne, vælg den positive rod og sæt
+
+ Vi antager et elastisk sammenstød, således at partiklen bevarer sin kinetiske energi og dermed sin fart, derudover gælder 
+der for elastiske sammenstød at hastighedsvektorens indgangsvinkel er lig udgangsvinklen på den udgående hastighedsvektor 
+efter sammenstødet. Vi kan finde den udadgående vektorretning ved at spejle således at partiklen nu befinder sig indenfor beholderens vægge og ved næste tidsskridt vil bevæge sig indad, langs den reflekterede retning.
+Nu kan vi gå i gang med opgaven:
+ Skriv et program, der simulerer det ovenfor beskrevne system (med en enkel beholder). Det er op til jer, hvilket design I vælger, og hvor i programmet tidsskridtene og kollisionstjekket håndteres, men I skal forklare jeres designvalg. I skal desuden sørge for at beholderen initialiseres med nogle rimelige værdier. (Hint: Det skal tage mange tidsskridt for en partikel at bevæge sig gennem beholderen, idet der ellers vil ske kollisioner konstant).
+
+ Udvid programmet med funktionalitet til at visualisere systemets tilstand ved et bestemt tidspunkt t. Her skal partiklernes positioner og beholderens væg tegnes (plottes), og information om beholderens radius og antallet af partikler udskrives. Vis resultatet i besvarelsen for et tidspunkt t_i af eget valg. Som alternativ visualisering kan I vælge at lave en animation af simuleringen se eksempelvis.
+
+ Gassens tryk P i beholderen er i kinetisk teori forklaret som stammende fra den kraft, der udøves af 
+gaspartiklerne som kolliderer med beholderens væg. Fra Newton's anden lov har vi at kraften af et legeme er lig masse 
+gange acceleration, d.v.s. på skalar form
+Den kraft en gaspartikel påvirker beholderens væg med kan udtrykkes ved partiklens kinetiske energi som er en funktion af 
+partiklens hastighed. Hvis vi antager at der er N partikler i gassen med samme masse m og vores beholder har 
+diameteren D=2r, 
+så kan den samlet kraftpåvirkning opskrives udfra gennemsnitsfarten \bar|v| (dvs. gennemsnitslængden af hastighedsvektorerne) for de N partikler.
+Trykket i beholderen kan derfor udtrykkes ved
+for beholderens areal A = pi r^2 (for at fysikken skal passe snyder vi og siger at enhederne på vores "areal" er cm^3 som svarer til at vores todimensionelle cirkel er uendelig tynd og har et volumen som er lig med arealet af cirklen). Implementer ligningen (tryk) i simulatoren, således at trykket i beholderen kan 
+beregnes udfra partiklernes hastigheder til et hvert tidspunkt i simuleringen.
+
+ Idealgasloven siger, simplificeret til vores 2d-simulator, at P \cdot A = N \cdot k_B \cdot T, hvor T er systemets 
+temperatur målt i Kelvin [K] og k_B = 1.380658 \cdot 10^-23 JK^-1 (enhederne er Joule pr. Kelvin) er Boltzmanns konstant. Ved at 
+udnytte (tryk) har vi så følgende relationer mellem tryk, temperatur og gennemsnitsfart 
+Brug ligningen (ideal) til at udvide simulatoren med funktionalitet til at vi kan angive gassens temperatur T og udfra 
+dette ændre på gaspartiklernes hastighedsvektorer således at den simulerede gas ændre sig til at simulerere gassen ved den 
+nye temperatur T. Dette kræver at vi 
+ beregner en ny gennemsnitshastighed udfra (ideal).
+ skalere hastighedsvektorene for de enkelte partikler udfra den nye gennemsnitshastighed. Dette kræver en 
+passende udvidelse af partikelobjektet med funktionalitet til at skalere v.
+ Lav visualiseringer af simulatoren for temperaturen T = 300 K (i grader celsius svare det til T=26.85 ^\circ C) og 
+for T=373.15 K (svare til T=100 ^\circ C). Hvis i ikke vælger at lave et animation skal simuleringen køre et vist antal 
+tidsskridt før visualiseringen af partiklernes position produceres.
+
+Tirsdagsøvelser
+
+ Vi kan tegne ellipser i  numpy ved at anvende matplotlib.patches.Ellipse klassen. Læs dokumentationen 
+for denne klasse for yderligere information og kig evt. på dette eksempel \urlhttp://matplotlib.org/examples/pylab_examples/
+ellipse_demo.html. Implementer en funktion som kan tegne en cirkel med et givet centrum og radius i et pyplot 
+koordinatsystem.
+
+Vi kan lave animationer ved hjælp af matplotlib på mindste to forskellige måder (virker forskelligt på Windows, MacOSX og Linux): 
+ numpy er som standard i ikke-interaktiv tilstand som betyder at figurere først bliver tegnet ved kald af 
+pyplot.show()|. Men skifter vi tilstanden til interaktiv ved kald af pyplot.ion()|, så bliver figurere oprettet med det 
+samme og tegnes ved kald til pyplot.draw()|. Dette eksempel viser hvad der skal gøres for at lave en simpel animation 
+(denne metode virker på MacOSX og Linux, men ikke på Windows 8):
+ numpy indeholder et animations modul kaldet animation som også kan anvendes. Her skal man 
+definere en funktion som tegner grafen for hvert tidsskridt i animationen. Her er et simpelt eksempel som viser animationen på skærmen:
+Udvide din løsning til bølgeopgaven fra ugeseddel 12g1, således at du kan animere bølgens bevægelse over tid ved hjælp 
+af en eller begge af disse animationsmetoder.
+
+ Anvend idealgasloven som angivet i (ideal) og lav en graf som viser trykket P som funktion af temperaturen 
+T for en beholder med en fast radius r (du vælger selv en værdi).
+
+ Anvend idealgasloven som angivet i (ideal) og lav en graf som viser trykket P som funktion af beholder radius r
+ for en fast temperatur T (du vælger selv en værdi).
+
+ Anvend idealgasloven som angivet i (ideal) og lav en graf som viser gennemsnitsfarten \barv (dvs. længden af gennemsnitshastighedsvektoren \barv) som en funktion af temperaturen T.
+
+ Lad os lave en simulator af Jordens bane rundt om Solen. Den type model vi er ved at specificere kaldes en 2-legeme 
+model og vi antager at Solen og Jorden er punktformet masser, dvs. de ikke har nogen udbredelse. Lad os antage at det kun er 
+Jorden der bevæger sig rundt om Solen og at verdenskoordinatsystemet er fastlagt i Solens centrum. 
+
+Til enhver tid bliver Jorden påvirket af gravitationskraften fra Solen, hvilket medfører at Jorden accelerere, og denne acceleration 
+kan på vektorform beskrives ved
+hvor \vecr_Jorden angiver vektoren fra Solens centrum til Jordens centrun og 
+r = \| \vecr_Jorden\|. Termen G M_Solen er gravitationskonstanten gange Solens masse 
+som har værdien G M_Solen = 2.959122082322128 \times 10^-4 \AU^3 / \udag^2.
+Vi kan simulerere Jordens position \vecr_Jorden ved at opdatere Jordens positions- og hastighedsvektor i tidsskridt 
+\Delta t
+og
+Vi har altså kun behov for at kende \veca, \vecv og \vecr til tiden t_n, dvs. der vi nåede til i sidste 
+simulationsskridt. Accelerationen \veca(t_n) kan beregnes udfra \vecr(t_n) for Jorden ved at anvende  
+
+Implementer en simulator af Jordens bevægelse rundt om Solen ved hjælp af ovenstående teori. Du kan benytte følgende 
+vektorer som initielle værdier for positions- og hastighedsvektorene for Jorden
+Enheden for positionsvektoren er [\AU] (Astronomisk enheder) og for hastighedsvektoren er den [\AU/\udag] (Astronomisk 
+enheder pr. dag). Du bør anvende et tidsskridt \Delta t < 1. Prøv at visualiser Jordens bane som funktion af tiden efter et 
+vist antal tidsskridt.
+
+Plan for ugen
+Denne uge tager vi fat på emnerne: Deterministiske og stokastiske tilstandsmaskiner, grammatikker og regulæreudtryk.  
+Vi kan anvende tilstandsmaskiner til modellering af forskellige aspekter og vi skal se nærmere på nogle eksempler. Vi vil også 
+kort kigge på kontekstfri grammatikker og anvendelse af disse samt på regulæreudtryk og hvorledes disse anvendes i Python til 
+at lede efter mønstre i strenge.
+
+Vi vil kigge nærmere på en type af stokastiske modeller kaldet Markov kæder. Denne type modeller finder anvendelser i så 
+forskellige områder som maskinoversættelse af naturlige sprog, analyse af DNA sekvenser, prædiktion af aktiekurser og visuel 
+opmåling af tre-dimensional menneskelig bevægelse.
+
+
+En Markov kæde er en stokastisk model for sekventielle fænomener beskrevet ved en sekvens af stokastiske variable. De 
+stokastiske variable i sekvensen er indekseret på samme vis som en liste i Python, dvs. at første element har index n = 0 og 
+næste element n=1, også videre. For et vilkårligt element i sekvensen med index n er modellens tilstand beskrevet ved 
+den 
+stokastiske variabel X_n\in Omega, som tager værdier fra en mængde Omega. Til vores 
+diskrete stokastiske variabel X_n hører der en sandsynlighedsfordeling beskrevet ved sandsynlighedsmassefunktionen 
+p(X_n), således at for et konkret 
+element fra mængden omega \in Omega, så angiver p(X_n = omega) sandsynligheden for at X_n antager værdien 
+omega. Ligeledes gælder der at p(X_n) er normaliseret 
+således at
+hvor K=|Omega| er antal elementer i mængden Omega og 
+Omega = \omega^(1), omega^(2), \ldots, omega^(K) \. Der gælder også at p(X_n = omega^(i)) \geq 0 for alle 
+omega^(i)\in Omega.
+
+Udover at kende sandsynligheden for de enkelte elementer i sekvensen er vi også interesseret i at kende sandynligheden for 
+forekomsten af en bestemt sekvens af elementer. Vi ønsker altså at modellere sandsynlighedsmassefunktionen 
+p(X_0, X_1, \ldots, X_N), hvor N angiver antal elementer i sekvensen. Hvis Omega eksempelvis angiver mængden af 
+bogstaver så angiver p(X_0=omega_0, X_1=omega_1, \ldots, X_N=omega_N) sandsynligheden for en bestemt sekvens af 
+elementer.
+
+En Markov kæde er en konkret model for p(X_0, X_1, \ldots, X_N), hvor vi antager at tegnet på indeks n kun afhænger af 
+tegnet på indeks n-1. Denne afhængighed beskrives ved den betinget sandsynligheden for X_n givet at vi kender tegnet 
+på indeks n-1, X_n-1 = omega_n-1, og vi opskriver denne som p(X_n | X_n-1 = omega_n-1). Der gælder at p(X_n | X_n-1 
+= omega_n-1) er normaliseret således at
+givet at X_n-1 = omega_n-1. Den betingede sandsynlighed p(X_n | X_n-1 = omega_n-1) kaldes i denne 
+sammenhæng for overgangssandsynligheden. Hvis vi samtidig specificere sandsynlighedsmassefunktionen q(X_0) for det 
+første index n=0 - sandsynligheden for det initielle element, så kan vi opskrive sandsynlighedsmassefunktionen for en sekvens baseret på en Markov kæde model som
+eller skrevet lidt mere kompakt ved hjælp af produkt symbolet
+Bemærk at overgangssyndlighedsmassefunktionen p(X_n | X_n-1) er den samme for alle indeks n>0 (denne egenskab 
+kaldes for homogenitet og stationaritet).
+
+Vi kan opskrive overgangssandsynlighederne som en K\times K matrix P = \P_ij \ hvor elementet på i'te 
+række og j'te søjle er givet ved
+Vi dropper indekset n, da overgangsandsynlighederne jo ikke afhænger af n. Den i'te række i P svarer til 
+sandsynlighedsmassefunktionen p(X | X = omega^(i)) for det konkrete tegn omega^(i) og er normaliseret som angivet i 
+\eqnrefnorm_conditional. Vi kan ligeledes skrive den initielle sandsynlighedsmassefunktion  q(X_0) som en K-
+dimensional søjlevektor v_0 = (q(X_0 = omega^(1)), \ldots, q(X_0 = omega^(K))). 
+
+Vi kan ved hjælp af denne vektor-matrix formulering beregne sandsynlighedsmassefunktionen v_n = p(X_n) for 
+tegnene til indeks n ved hjælp af matrix multiplikation
+hvor P^n angiver matrix multiplikation af P med sig selv n gange og hvor ^T betyder transponering. v_n = p(X_n) kaldes for 
+marginal fordelingen af p(X_0, X_1, \ldots, X_N) for indeks n. 
+
+En af de ting man er interesseret i når man arbejder med 
+Markov kæder er hvad der sker med v_n når vi lader indekset n vokse. Hvis Markov kæden beskrevet ved 
+P er en ergodisk homogen Markov kæde, en bestemt 
+matematiske egenskaber som vi ikke skal komme nærmere ind på her (for yderligere information om Markov kæder anbefaler 
+vi \citeBremaud99a), så gælder der at Markov kæden konvergere mod en 
+stationær fordeling pi = (pi(X= omega^(1)), \ldots,  pi(X= omega^(K))) (dvs. en fordeling uafhængig af indekset 
+n)
+Dvs. at efter et vist antal skridt n i kæden så forbliver fordelingen over tegnene i Omega den samme. Vi kan finde 
+pi ved enten at simulerer kæden i n skridt, men vi kan også finde pi analytisk 
+ved at beregne venstre egenvektoren e_1 af P der hører til den største egenværdi \lambda_1 som vil 
+have værdien 
+\lambda_1=1. Venstre egenvektoren af P er defineret som e_1^T P = \lambda_1 e_1^T. Vi kan beregne venstre egenvektorer ved at udnytte at P^T e_1 = \lambda_1 e_1 og dvs. at vi blot skal finde egenværdier og -vektorer for den transponeret matrix P^T - eksempelvis ved at anvende numpy.linalg.eig i Python. 
+Hvis vi normalisere e_1 som \eqnrefnorm_marginal så gælder der at pi = e_1.
+Som en sidebemærkning kan nævnes at den næst største egenværdi af P giver et mål for 
+konvergenshastigheden, dvs. hvor mange skridt n vi skal tage før kæden er konvergeret til pi (for yderligere 
+information om dette se \citeBremaud99a).
+ 
+Dette resultat er under antagelse af at vores Markov kæde model opfylder de matematiske betingelser vi ikke vil nævne her. Vi 
+kan i stedet undersøge om en konkret model konvergere mod pi = e_1 ved at simulerere kæden i n 
+skridt og derpå estimere sandsynlighedsmassefunktionen v_n og se om den er tæt på e_1. 
+
+For at kunne simulerer en Markov kæde model har vi behov for at kunne sample tilfældige elementer fra mængden Omega 
+udfra sandsynlighedsmassefunktionerne q(X_0) og p(X_n | X_n-1). Til det formål kan vi anvende den såkaldte 
+transformationsmetode, som kan anvendes på diskrete mængder og sandsynlighedsmassefunktioner. I det efterfølgende vil vi for at forenkle forklaringen betragte en vilkårlig sandsynlighedsmassefunktion 
+p(X) på X\in Omega. Husk på at for et fastlagt X_n-1 = omega kan vi betragte p(X_n | X_n-1 = omega) som en 
+sandsynlighedsmasse på linje med q(X_0) og en vilkårlig anden p(X). Vi kan derfor også anvende nedenstående metode 
+til at sample fra p(X_n | X_n-1 = omega) .
+
+Metoden går ud på at sample et uniformt fordelt tilfældig tal z mellem [0,1] og derpå benytte dette til et omvendt opslag i 
+den akkumulerede sandsynlighedsfordeling for at finde det tilhørende element fra mængden Omega. Først skal vi beregne 
+den akkumulerede sandsynlighedsfordeling h(X) for sandsynlighedsmassefunktionen p(X) og det gøres ved
+Dvs. at h(X=omega^(i)) er summen af sandsynlighederne for alle elementer i Omega op til element i. Vi antager 
+iøvrigt at elementerne i Omega har en orden således at ovenstående summation giver 
+mening. [Implementationshint: Husk på at vi kan betragte p(X) som en vektor v og vi kan derfor beregne h(X) ved hjælp af 
+funktionen numpy.cumsum.] 
+
+Algoritmen for at sample et tilfældigt udvalgt element omega \in Omega udfra sandsynlighedsmassefunktionen p(X) er
+som følger:
+\beginenumerate
+ Udtræk et uniformt fordelt tilfældig tal z \in [0,1]. [Implementationshint: Her kan du anvende Pythons indbyggede eller numpy.random.rand tilfældig tal generator.]
+ Find ved opslag i vektoren H=(0, h(X=omega^(1)), h(X=omega^(2)), \ldots, , h(X=omega^(K-1))) det mindste element indeks i således at z >= H_i.
+ Returner nu det samplet symbol givet ved indeks i, dvs. omega^(i).
+\endenumerate
+Figur transformationsmetoden viser en illustration af transformationsmetoden. Vi kan tænke på den 
+akkumulerede fordeling h(X) som en inddeling af intervallet [0,1] i delintervaller som hver svarer til et af elementerne i 
+Omega. Længden af delintervallet er bestemt ved elementets sandsynlighed i følge p(X).  Opslaget i h(X=omega^(i)) 
+kan derfor tænkes som at finde det delinterval af [0,1] som z ligger indenfor og dette 
+delinterval svarer til et konkret element indeks i.
+
+[Til tirsdag:]~\\
+  Læs om deterministiske endelige automata i uddrag fra Kapitel 3 i Stuart "Understanding computation", O'Reilly 2013  
+  (spring afsnittet med titlen Simulation over).\\
+  Læs om grammatikker og syntakstræer i Kapitel 1.5, 2.2, 2.3 fra Sethi "Programming Languages" som findes på 
+  Absalon under Undervisningsmateriale.\\
+  Til forelæsningen gennemgår vi deterministiske tilstandsmaskiner og endelige automata, samt kontekstfri grammatikker og 
+  syntakstræer for beregningsudtryk.
+[Til torsdag:]~\\
+  Læs om regulæreudtryk på \urlhttps://docs.python.org/2/howto/regex.html#regex-howto og dokumentationen for re 
+  modulet på \urlhttps://docs.python.org/2/library/re.html.\\
+  Læs om Markov kæder på ugesedlen.\\
+  Til forelæsningen gennemgår vi regulæreudtryk og stokastiske tilstandsmaskiner med fokus på Markov kæder. 
+
+Bemærk: Der er ingen obligatorisk afleveringsopgave i denne uge. 
+
+ Hvis du mangler at lave nogle af øvelsesopgaverne fra ugeseddel 14, så lav disse nu. Opgaverne 14ti1, 14ti2, 14to1, 14to2 
+og 14to3 er særlig relevante for den obligatoriske opgave fra ugeseddel 14.
+
+opg:tegnfrekvenser Skriv et program som indlæser en streng fra tastaturet og derpå optæller forekomsten (dvs. 
+hyppigheden) af forskellige tegn i strengen. Udskriv tegnhyppighederne på tabelform til skærmen.
+
+ Udvid dit program fra opgave opg:tegnfrekvenser, således at tegnhyppighederne også bliver 
+visualiseret som et grafisk histogram.
+
+ Skriv et program som kan indlæse og udskrive til skærmen indholdet af tekstfilen som du finder i 
+Absalon under Undervisningsmateriale/Datamateriale/tekst-utf8.txt. Teksten er gemt i unicode UTF-8 format og skal 
+indlæses og 
+repræsenteres i unicode format. Python 2.x 
+indeholder en variant af datatypen str som er en unicode repræsentation af strenge kaldet unicode. Husk 
+på  at vi i Python kan lave unicode strengværdier ved at vedhæfte u foran strengen, eksempelvis som 
+u"Dette er en unicode strengværdi". Python 2.x indeholder et standard modul kaldet codecs som indeholder 
+funktionalitet til at læse og skrive unicode tekstfiler (se \urlhttps://docs.python.org/2/library/codecs.html). Du kan åbne 
+tekstfilen med fh = codecs.open("tekst-utf8.txt", encoding="utf-8") hvorpå du kan læse fra file handle fh som du 
+plejer. Bemærk at i unicode typen repræsenteres 
+ikke-amerikanske tegn med en byte hexadecimal kode således at \xe6| refererer til tegnet æ etc. Du kan konvertere en 
+unicode streng til en standard str streng ved at anvende enten codecs.encode funktionen eller 
+unicode.encode metoden. Eksempelvis således ustr.encode('latin\_1') (under antagelse af at ustr 
+indeholder en streng af typen unicode).
+
+Besvarelser af disse opgaver skal ikke afleveres, men opgaverne forventes løst ved udløbet af denne uge.
+
+ Hvis du ikke blev færdig med øvelsesopgaverne i tirsdags, så lav de resterende nu.
+
+ Skriv et program som simulerer et trafiklys. Repræsentér de tre tilstande Rød, Gul, Grøn som en deterministisk 
+tilstandsmaskine. Programmet kan skifte tilstande ved input fra tastatureret.
+
+ Skriv et program som simulerer en deterministisk endelig automaton maskine. Maskinenen skal kunne indlæse en streng 
+og skifte tilstande efter hvilket tegn den læser. Prøv eksempelvis at lade maskinen håndtere tegnene a, b og 
+c. Du bestemmer selv hvorledes maskinen er opbygget, dvs. hvor mange tilstande og hvilke tilstandsovergange 
+maskinen har. Afprøv din automaton med forskellige strenge bestående af tegnene a, b og 
+c og se hvordan maskinen skifter tilstande. Kan du opbygge en automaton som tæller (eller acceptere) forekomster af 
+delstrenge abc?
+
+ Skriv et program som ved hjælp af regulæreudtryk og Python modulet re indlæser en streng bestående af ord og derpå opdeler strengen i ord ved at finde mellemrumstegn og dele strengen ved disse.
+
+ Skriv et program som indlæser en streng bestående af vilkårlige tegn og ved hjælp af regulæreudtryk og Python modulet 
+re finder alle forekomster af tegn fra en delmængde af tegn, eksempelvis \a,b,c\, i strengen og ignorere alle 
+andre tegn.
+
+ Angiv en kontekstfri grammatik, som beskriver syntaksen for en
+sekvens af cifre og bogstaver, der starter med et bogstav.
+
+ Tegn syntakstræer for følgende udtryk med hjælp af
+grammatikken for udtryk, som beskrevet i Sethi eller
+forelæsningsslides. Oversæt udtrykkene til omvendt polsk (postfix) notation, og beskriv hvordan det sidste af dem kan 
+evalueres ved hjælp af en stak.  
+
+ Skriv et program som implementere en stak baseret lommeregner som kan evaluere regneudtryk i omvendt polsk (postfix) 
+notation som beskrevet i Sethi afsnit 2.3 eller ved forelæsningerne. Du kan anvende Python lister til at implementere stakken og 
+de to operationer push og pop.
+
+ Skriv et program som kan simulerer en Markov kæde model med to tilstande repræsenteret ved tegnene \0,1\. 
+Kædens initielle sandsynlighedsmassefunktion over tilstandene er q(X_0=0) = 0.5 og q(X_0=1) = 0.5, og 
+overgangssandsynlighederne kan på tabelform opskrives som
+og på matrixform.
+Tegn tilstandsdiagrammet på papir. Dit program skal kunne simulerere Markov kæden ved først at sample et tilfældig tegn fra 
+mængden \0,1\ udfra sandsynlighedsmassefunktionen  q(X_0) ved at anvende transformationsmetoden beskrevet i 
+afsnit~transformationsmetoden. De efterfølgende tegn skal samples ud fra p(X=omega^(j)| X=omega^(i)) givet 
+det forrige tegn omega^(i).
+
+Kan man automatisere processen bag det at skrive tekster? Kan vi få en computer til at forfatte en bog? 
+Teoretisk set kunne der godt komme en meningsfyldt tekst frem, hvis vi bare vælger bogstaver tilfældigt og sætter dem efter 
+hinanden. Men det er meget usandsynligt. Vi skal i denne opgave undersøge nogle stokastisk modeller for tekster som vi kan 
+anvende til at generere nye tilfældige tekster, som måske er meningsfyldte. Vi vil kigge nærmere på den type af stokastiske 
+modeller kaldet Markov kæder.
+
+For komplethed repeterer vi her teorien om Markov kæder fra ugeseddel 15 med nogle tilføjelser, forenklinger og tilpasning til 
+tekstmodelleringsproblemet.
+
+En Markov kæde er en stokastisk tilstandsmaskine som modellerer sekventielle fænomener, såsom tekster som vi jo kan tænke 
+på som en sekvens af tegn eller ord. Markov kæden indeholder en række tilstande, og vi vil i denne opgave tænke på tilstande 
+som værende ensbetydende med tegn eller ord. I en Markov kæde er den nuværende tilstand (tegn eller ord) en stokastiske 
+variable X. Når vi bevæger os mellem tilstande i modellen, så får vi en sekvens (også kaldet en kæde) af stokastiske 
+variable X_0, X_2, \ldots, X_n, hvor X_n repræsenterer Markov kædens tilstand efter n skridt i kæden. Bemærk at vi har 
+valgt at de stokastiske variable i sekvensen er indekseret på samme måde som lister og strenge i Python, dvs. at første 
+element har 
+index n = 0 og næste element n=1, også videre. Den stokastiske tilstandsvariabel X_n tager værdier fra en mængde 
+Omega som repræsenterer Markov kædens tilstande, dvs. at X_n\in Omega. I denne opgave vil Omega betegne 
+mængden af bogstaver og udvalgte tegn eller mængden af ord (se mere under de konkrete modeller beskrevet i afsnit model1 -- model2). 
+
+Sidebemærkning omkring stokastiske variable: Til en diskret stokastiske variabel X hører der en sandsynlighedsmassefunktion p(X), således at for en konkret 
+værdi fra mængden omega \in Omega, så angiver p(X = omega) sandsynligheden for at X antager værdien 
+omega. Ligeledes gælder der at p(X) er normaliseret, 
+således at
+hvor K=|Omega| er antal elementer i mængden Omega og 
+Omega = \omega^(1), omega^(2), \ldots, omega^(K) \. Der gælder også at p(X = omega^(i)) \geq 0 for alle 
+omega^(i)\in Omega.
+
+
+En Markov kæde model er fuldt ud specificeret ved mængden af tilstande Omega --- i denne opgave vil tilstande som sagt 
+være enten bogstaver og tegn eller ord. Dertil skal angives en sandsynlighedsmassefunktion q(X_0), som beskriver 
+sandsynligheden for start-tilstanden X_0\inOmega for Markov kæden. 
+Vi kan opskrive sandsynlighedsmassefunktionen q(X_0) som en tabel med K indgange, således at det i'te element angiver 
+sandsynligheden q(X_0 = omega^(i)) for at start-tilstanden er X_0 = omega^(i). Tabellen ser derfor således ud
+
+I en Markov kæde antager vi at tilstanden efter  
+n skridt kun afhænger af tilstanden på indeks n-1. 
+Denne afhængighed beskrives ved den betingede sandsynlighed for X_n = omega^(j), dvs. sandsynligheden for at vi til 
+indeks n i kæden er i tilstanden omega^(j) \in Omega, givet at vi kender tilstanden 
+på indeks n-1, X_n-1 = omega^(i) og omega^(i) \in Omega. Vi opskriver denne sandsynlighed som p(X_n = omega^(j) | X_n-1 = omega^(i)). Der gælder at sandsynlighedsmassefunktionen p(X_n  | X_n-1 = omega^(i)) er 
+normaliseret, således at
+givet at forrige tilstand var X_n-1 = omega^(i). Den betingede sandsynlighed p(X_n = omega^(j) | X_n-1 = omega_n-1) kaldes i denne sammenhæng for overgangssandsynligheden.
+
+Vi kan opskrive overgangssandsynlighederne som en K\times K tabel hvor elementet på i'te 
+række og j'te søjle er givet ved p(X_n = omega^(j) | X_n-1 = omega^(i)). Tabellen ser derfor således ud
+Den i'te række i tabellen svarer til 
+sandsynlighedsmassefunktionen p(X_n | X_n-1 = omega^(i)) for tilstanden omega^(i) og er normaliseret som 
+angivet i \eqnrefnorm_conditional. 
+
+Vi er i denne opgave interesserede i at kunne estimerere en Markov kæde model fra data, i form af en tekst, og derpå at kunne 
+simulerere Markov kæden og derved generere en ny sekvens at tilfældige tilstande som følger modellen. Da vi her betragter 
+tilstande som ensbetydende med tegn eller ord, så vil den genererede tilfældige sekvens af tilstande svare til en sekvens af 
+tegn eller ord --- en tekst. Vi vil i afsnit model1 -- model3 beskrive hvordan de konkrete modeller estimeres fra 
+data og vil derfor her koncentrere os om simulering af Markov kæde modellen.
+
+Givet en Markov model med tilstandsmængde Omega, sandsynlighedsmassefunktion q(X_0) for start-tilstanden og overgangssandlighedsmassefunktionen  p(X_n | X_n-1 = omega), så kan vi simulere modellen ved at generere en tilfældig sekvens af tilstande fra modellen ved at benytte denne algoritme:
+ Udvælg en tilfældig start-tilstand ved sampling fra sandsynlighedsmassefunktionen q(X_0).
+ For hvert skridt i kæden: Udvælg en tilfældig næste tilstand fra overgangssandsynlighedsmassefunktionen p(X_n | X_n-1 = omega) givet forrige tilstand X_n-1 = omega.
+Vi vil i afsnit transformationsmetoden forklare hvordan man kan foretage sampling fra de to sandsynlighedsmassefunktioner q(X_0) og p(X_n | X_n-1 = omega). 
+
+Lad os kigge på et lille eksempel: Lad vores Markov kæde bestå af 3 tilstande Omega= \a, b, c \ 
+og lad os sige at sandsynlighedsmassefunktionen q(X_0) for start-tilstanden er givet ved denne tabel:
+Lad overgangssandsynlighedsmassefunktionen p(X_n | X_n-1) være givet ved denne tabel:
+Denne konkrete overgangssandsynlighedsmassefunktion p(X_n | X_n-1) er visualiseret i 
+Vi kan simulerere denne Markov model ved at starte med at udvælge en tilfældig start-tilstand ved sampling fra q(X_0). Lad 
+os sige at det giver os tilstanden c og det vil sige at første tilstand i sekvensen er X_0 = c. Næste tilstand i 
+kæden fås ved at udtrække en tilfældig tilstand fra p(X_1 | X_0= c), dvs. fra rækken X_n-1= c i 
+overgangssandsynlighedstabellen p(X_n | X_n-1) ovenfor. Lad os sige at vi får tilstanden a, 
+således at næste tilstand i sekvensen er X_1 = a. Vi kan nu udvælge den næste tilstand ved at tage endnu et skridt i 
+kæden ved at udtrække en tilfældig tilstand fra p(X_2 | X_1= a), dvs. fra rækken X_n-1= a i tabellen.
+Lad os sige vi får tilstanden b, dvs. at X_2 = b.
+Vi har nu simuleret Markov kæden til n=2 og genererede den tilfældige tilstandssekvens c a b.
+
+For at kunne simulere en Markov kæde model har vi behov for at kunne sample tilfældige tilstande fra mængden Omega 
+udfra sandsynlighedsmassefunktionerne q(X_0) og p(X_n | X_n-1). Til det formål kan vi anvende den såkaldte 
+transformationsmetode, som kan anvendes på den slags diskrete mængder og sandsynlighedsmassefunktioner som vi skal 
+beskæftige 
+os med i denne opgave. I det efterfølgende vil vi for at forenkle forklaringen betragte en vilkårlig sandsynlighedsmassefunktion 
+p(X) på X\in Omega. Husk på at for et fastlagt X_n-1 = omega kan vi betragte p(X_n | X_n-1 = omega) som en 
+sandsynlighedsmassefunktion på linje med q(X_0) og en vilkårlig anden p(X). Vi kan derfor også anvende nedenstående 
+metode til at sample fra p(X_n | X_n-1 = omega). 
+
+Metoden går ud på at sample et uniformt fordelt tilfældig tal z mellem [0,1] og derpå benytte dette til et omvendt opslag i 
+den akkumulerede sandsynlighedsfordeling for at finde den tilhørende tilstand fra mængden Omega. Først skal vi beregne 
+den akkumulerede sandsynlighedsfordeling h(X) for sandsynlighedsmassefunktionen p(X) og det gøres ved
+Dvs. at h(X=omega^(i)) er summen af sandsynlighederne for alle tilstande i Omega op til tilstanden i. Vi antager 
+iøvrigt at tilstandene i Omega har en orden, således at ovenstående summation giver 
+mening. [Hint: Vi kan betragte p(X) som en vektor og vi kan derfor beregne h(X) ved hjælp af 
+funktionen numpy.cumsum.] 
+
+Algoritmen for at sample en tilfældigt udvalgt tilstand omega \in Omega udfra sandsynlighedsmassefunktionen p(X) er
+som følger:
+ Udtræk et uniformt fordelt tilfældig tal z \in [0,1[. [Hint: Her kan du anvende Pythons indbyggede 
+random.random() eller numpy.random.rand() tilfældig tal generator.]
+ Find ved opslag i vektoren H=(0, h(X=omega^(1)), h(X=omega^(2)), \ldots, h(X=omega^(K-1))) det mindste 
+tilstandsindeks i således at z >= H_i.
+ Returner nu den samplede tilstand givet ved indeks i, dvs. omega^(i).
+Figur transformationsmetoden viser en illustration af transformationsmetoden. Vi kan tænke på den 
+akkumulerede fordeling h(X) som en inddeling af intervallet [0,1] i delintervaller som hver svarer til en af tilstandene i 
+Omega. Længden af delintervallet er bestemt ved tilstandens sandsynlighed i følge p(X).  Opslaget i h(X=omega^(i)) 
+kan derfor tænkes som at finde det delinterval af [0,1] som z ligger indenfor og dette 
+delinterval svarer til en konkret tilstand.
+
+Bemærk at transformationsmetoden ikke fungerer hvis p(X=omega)=0 for nogle af tilstandene omega \in Omega. 
+Men vi kan godt anvende metoden hvis vi fjerner de problematiske tilstande omega inden vi beregner h(X). Da 
+sandsynligheden jo er  p(X=omega)=0, så skal vi ikke kunne vælge tilstanden omega. I eksemplet fra 
+afsnit~teori er sandsynligheden p(X_n  = a | X_n-1 = a) = 0. Hvis vi vil 
+sample fra p(X_n  | X_n-1 = a) = 0, så bør vi kun vælge mellem tilstandene X_n  = b eller X_n  = 
+c.
+
+Hvis vi har lavet en implementation af denne metode, så kan vi afprøve den ved at anvende metoden på en
+sandsynlighedsmassefunktion p(X) vi selv specificerer. Vi kan sample en sekvens af tilstande, og derpå estimere 
+sandsynlighedsmassefunktionen \tildep(X) ved at optælle hyppighederne af tilstande i sekvensen og normalisere ved at 
+dividere med antal tilstande i sekvensen (som i model 1 beskrevet i afsnit model1). Hvis vi sampler lange nok 
+sekvenser så vil \tildep(X) og p(X) være tætte på hinanden (hvordan kan vi let definere hvad "tæt på hinanden" 
+betyder?). 
+
+Uafhængige tegn
+I den første model antager vi at en tekst er bygget op af en sekvens af bogstaver og andre tegn såsom komma, punktum og 
+mellemrum, dvs. at mængden Omega_tegn = \a, b, c, \ldots,  , ,  . , \textvisiblespace \(vi anvender tegnet \textvisiblespace som en synlig udgave af mellemrumstegnet)  og  X_n \in Omega_tegn.
+Vi antager også at tegnene er tilfældig genereret, og uafhængig af foregående tegn i sekvensen. Dette er et specialtilfælde af 
+Markov kæde modellen hvor p(X_n | X_n-1) = q(X_0) = p(X).
+Vi antager således at hvert tegn i sekvensen kommer fra den samme sandsynlighedsmassefunktion p(X). Vi kan derfor  
+generere en ny tekstsekvens udfra modellen ved for hvert index n at trække et tilfældig tegn udfra 
+sandsynlighedsmassefunktionen p(X).
+
+Det vil sige vi har brug for en konkret sandsynlighedsmassefunktion p(X). Hvis vi har en tekst så kan vi estimere  
+sandsynlighedsmassefunktionen p(X) udfra denne. Lad os antage at teksten består af M tegn, vi kan nu tælle hvor 
+mange gange de enkelte tegn forekommer i teksten, også kaldet hyppigheden af tegnet. Hvis vi derpå 
+normalisere hvert tegns hyppighed f(omega^(i)) ved at dividere med antal tegn M i teksten, så får vi et estimat af 
+sandsynlighedsmassefunktionen p(X) som opfylder \eqnrefnorm_marginal. Dvs. 
+Med vores estimat af p(X) kan vi nu 
+generere tekster som følger modellen, ved at anvende transformationsmetoden (se afsnit 
+transformationsmetoden) til at sample tilfældige tegn 
+som følger sandsynlighedsmassefunktionen p(X). Vi skal blot sample nye tegn N gange for at skabe en tekst med N 
+tegn (en sekvens med N tilstande) som følger model 1.
+
+Dette er et eksempel på tekst genereret fra model 1:
+
+
+\subsectionModel 2: Parvis afhængige tegn
+model2
+I den næste model vil vi stadig modellere de enkelte tegn i teksten og vores mængde er stadig 
+Omega_tegn = \a, b, c, \ldots,  , ,  . , \textvisiblespace \ og  X_n \in Omega_tegn. Men vi vil nu benytte den fulde 
+Markov kæde model, hvilket betyder vi skal specificere overgangssandsynlighederne 
+p(X = omega^(j) | X = omega^(i)) og sandsynlighedsmassefunktionen q(X_0) for start-tilstanden. Det betyder altså at 
+alle tegn, undtaget det første, afhænger af det foregående tegn. 
+
+Denne model kan simuleres ved at vi starter med at sample det første tegn udfra sandsynlighedsmassefunktion 
+q(X_0) for start-tilstanden ved hjælp af transformationsmetoden (se afsnit transformationsmetoden). Derpå samples 
+alle efterfølgende tegn ud fra 
+p(X_n = omega^(j) | X_n-1 = omega^(i))  baseret på tegnet X_n-1 = omega^(i) på det foregående indeks n-1. 
+Du kan igen anvende transformationsmetoden (se afsnit transformationsmetoden) til at sample et nyt tilfældig tegn fra 
+p(X_n | X_n-1 = omega^(i)). 
+
+Hvis vi har en tekst med M tegn kan vi estimere sandsynlighedsmassefunktion q(X_0) ved at tælle hvor 
+mange gange de enkelte tegn forekommer, dvs. finde hyppigheden for hvert tegn på samme måde som under model 1. Ved at 
+anvende 
+\eqnrefsandsynlighedsestimat og får vi et estimat for q(X_0). Vi skal også 
+estimere overgangssandsynlighederne p(X = omega^(j) | X = omega^(i)). Dette kræver at vi beregner antal forekomster 
+af alle par af tegn i Omega_tegn, dvs. hvis vi starter med bogstavet a, så skal vi optælle hyppighederne 
+for aa, ab også videre, samt hyppighederne for a,, a. og a\textvisiblespace (dvs. tegnet 
+a efterfulgt af et mellemrum). Og dette skal gentages for alle andre tegn i Omega_tegn. For hvert første tegn omega^(i) \in Omega_tegn i 
+tegnparret får vi en hyppighed f(omega^(i) omega^(j)) (eller antal forekomster), for alle omega^(j)\in Omega_tegn, for forekomsten af tegnparret 
+omega^(i) omega^(j). Vi kan beregne 
+sandsynlighedsmassefunktionen p(X_n | X_t-1=omega^(i)) udfra disse hyppigheder og ved at sørge for at p(X_n | X_t-1=omega^(i)) er 
+normaliseret således at 
+\eqnrefnorm_conditional er opfyldt. Dette gøres ved at beregne normaliseringsfaktoren Z(omega^(i)) som vi skal dividere 
+alle tegnpars hyppigheder med for at få omregnet til sandsynligheden for tegnparret
+hvor f(omega^(i) omega^(j)) er hyppigheden for forekomsten af tegnparret omega^(i) omega^(j). 
+Sandsynlighedsmassefunktionen p(X | X=omega^(i)) kan derpå beregnes ved 
+
+
+
+Dette er et eksempel på tekst genereret fra model 2:\\
+
+
+
+\subsectionModel 3: Parvis afhængige ord
+model3
+I denne model anvender vi også den fulde Markov kæde model som i model 2, men vi udskifter 
+tegnmængden med mængden af ord, således at Omega_ord = \en, et, tal, vektor, 
+Python, \ldots \. Tilstandene i denne model er altså hele ord og ikke blot enkelte tegn.
+Bemærk at vi vælger ikke at inkludere komma, punktum og mellemrum for at lette modelleringsproblemet. Vores model er nu at 
+X_n \in Omega antager ord som værdier i stedet for tegn, og Markov kæden modellerer afhængigheder mellem ord. Sandsynlighedsmassefunktion q(X_0) er derfor en sandsynligheder for ord i Omega_ord og 
+overgangssandsynlighederne p(X = omega^(j) | X = omega^(i)) angiver sandsynligheden for at ordet omega^(i)\in 
+Omega_ord efterfølges af ordet omega^(j)\in Omega_ord.
+
+Denne model kan, ligesom model 2, simuleres ved at vi starter med at sample det første ord udfra den initielle 
+sandsynlighedsmassefunktion q(X_0) ved hjælp af transformationsmetoden (se afsnit transformationsmetoden). Derpå samples alle efterfølgende ord ud fra 
+p(X_n = omega^(j) | X_n-1 = omega^(i))  baseret på ordet X_n-1 = omega^(i) på det foregående indeks n-1. Du kan 
+igen anvende transformationsmetoden (se afsnit transformationsmetoden) til at sample et nyt tilfældig ord fra 
+p(X = omega^(j) | X = omega^(i)). For at forenkle modellen bør du skrive et mellemrumstegn efter hvert ord, således at vi 
+tydeligt kan se de enkelte samplede ord i den genererede tekst.
+
+For at estimere sandsynlighedsmassefunktion q(X_0) for start-tilstanden og overgangssandsynlighederne udfra en tekst med M 
+ord kan vi anvende samme strategi som under model 2. Forskellen er at vi for q(X_0) skal optælle forekomster af ordene i 
+Omega_ord, og for overgangssandsynlighederne p(X = omega^(j) | X = omega^(i)) skal vi optælle 
+forekomster af alle ordpar kombinationer i Omega_ord. Eksempler på ordpar kunne være en vektor, 
+en tal, en et, et vektor, et tal, et en, vektor tal, tal vektor, osv. Udfra de 
+estimerede hyppigheder f(omega^(i) omega^(j))  for de enkelte ordpar kan vi nu estimere overgangssandsynlighederne 
+ved at anvende \eqnrefovergangssand_estimat.
+
+Dette er et eksempel på tekst genereret fra model 3:
+
+En samling af teksteksempler kaldes indenfor lingvistik for et tekstkorpus, og det bliver benyttet til at analysere sprogstrukturer 
+og skabe modeller, såsom vores Markov kæder. Vi vil i denne opgave benytte et tekstkorpus, som består af uddrag fra kursets 
+ugesedler, og du finder dette som en del af eksamensopgaven i Absalon.
+
+Vi kan på forhånd definere mængden Omega_tegn ved at specificere alle bogstaver i det danske alfabet og 
+komma, punktum og mellemrum. Men det er ikke lige så let med mængden Omega_ord. Her foreslår vi at du 
+opbygger mængden ved at identificere alle ord i vores tekstkorpus, og hvert nye ord bliver tilføjet mængden 
+Omega_ord. Det er tilladt at benytte Pythons regulærudtryk modul re og andre indbyggede moduler og 
+funktioner til at foretage den nødvendige processering af teksten.
+
+Dette tekstkorpus indeholder andre tegn og tal end den mængde Omega_tegn  vi 
+har beskrevet under model 1 og 2. Når du analyserer dette tekstkorpus bør du derfor springe disse tegn over, dvs. behandle dem som 
+om de ikke eksisterer. Da teksten indeholder æ, ø og å bør du indlæse den i Unicode format og håndtere strenge i dit program 
+som Unicode strenge. Tekstkorpusfilen er gemt i UTF-8 tekstformat. [Hint: Kig nærmere på en af øvelse på ugeseddel 15].
+
+I denne opgave skal du skrive et program i Python, der
+Kan indlæse det tekstkorpus der er beskrevet i afsnit~data og estimere sandsynlighederne for forekomster af de 
+enkelte tegn, bogstaver og ord fra Omega_tegn og  Omega_ord i teksten, samt 
+overgangssandsynlighederne. Dertil skal programmet opbygge ordmængden Omega_ord som beskrevet i afsnit~data. Du skal selv vælge passende datarepræsentationer.
+
+Visualiserer de estimerede sandsynlighedsmassfunktioner, således at sandsynlighedsmassefunktionen q(X_0) for tegn, 
+bogstaver og ord vises som et histogram, og overgangssandsynlighedstabellerne p(X_n | X_n-1) vises som billeder, som i 
+figur~overgangssandsynligheder, hvor farven på pixels 
+angiver sandsynligheden for den pågældende overgangssandsynlighed (husk at normalisere 
+sandsynlighedsmassefunktionerne som i (norm_marginal) og (norm_conditional). 
+
+Simulerer model 1 (se afsnit model1) og udskriver en tilfældig tekst som er N=1000 tegn lang.
+Teksten må indeholde samtlige af det danske alfabets bogstaver samt mellemrum, 
+punktum og kommaer. Teksten skal af programmet gemmes i en tekstfil med unicode UTF-8 format og skal navngives model1.txt.
+
+b Simulerer model 2 (se afsnit model2) og udskriver en tilfældig tekst som er N=1000 tegn lang.
+Teksten må indeholde samtlige af det danske alfabets bogstaver samt mellemrum, 
+punktum og kommaer. Teksten skal af programmet gemmes i en tekstfil med unicode UTF-8 format og skal navngives 
+model2.txt.
+
+c Simulerer model 3 (se afsnit model3) og udskriver en tilfældig tekst som er N=1000 ord lang.
+Teksten må indeholde samtlige ord fra Omega_ord, som du har opbygget udfra 
+tekstkorpus som beskrevet i afsnit data. Teksten skal af programmet gemmes i en tekstfil med unicode UTF-8 format 
+og skal navngives model3.txt.
+
+Opgavens besvarelse skal bestå af
+Kildekode til dit program. Format for kildekode- og navngivning af filer skal følge anvisningerne i afsnit 1. 
+
+En rapport i PDF format som indeholder en kort beskrivelse af og begrundelse for dine valg af datarepræsentation og 
+programstruktur, samt alle grafer du bliver bedt om at producere og dine kommentarer til disse. 
+
+Der skal udarbejdes en afprøvning af alle relevante dele (intern og ekstern test) af det udviklede program
+(indbyggede Python funktioner og funktionalitet fra biblioteker såsom numpy| og re| skal ikke afprøves). 
+Afprøvningen skal beskrives i rapporten (Beskriv hvorledes afprøvningen udføres i programmet) og selve afprøvningen dokumenteres i rapporten og/eller af programmet selv (når programmet bliver udført).  
+     
+Ved vurdering af din besvarelse vil der, udover ovenstående, blive lagt vægt på dine valg af datatyper, datastrukturer, 
+programdesign og dit programs struktur. Rapporten tæller også med i bedømmelsen.
+
+Bemærk afslutningsvis at det er tilladt at tale med andre om opgaven og mulige løsninger, men at aflevering af hele eller 
+delvise kopier af andres opgaver eller opgaver skrevet i fællesskab er at betragte som eksamenssnyd.  Desuden vil 
+underviserne og instruktorene gerne besvare spørgsmål omkring forståelse af opgavetekstens indhold og af generel karakter.  
+For at stille alle lige, vil al diskussion dog foregå på kursets diskussionsforum i Absalon i hele opgaveperioden. En
